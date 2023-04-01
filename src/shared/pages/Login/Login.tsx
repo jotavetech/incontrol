@@ -35,6 +35,13 @@ export function Login() {
             type="password"
           />
         </div>
+        <button
+          type="button"
+          className="flex gap-2 justify-center items-center mt-3 bg-white p-2 w-full rounded-md text-black font-semibold"
+        >
+          <img src="/assets/img/google.svg" className="w-5" />
+          Login with Google
+        </button>
         <button className="bg-secondary-color px-6 py-2 mt-5 rounded-md hover:bg-secondary-color-2 hover:pr-20 transition-all">
           Login
         </button>
