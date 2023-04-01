@@ -1,5 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import { Login, Register } from "./shared/pages";
+
+import { Footer } from "./shared/components";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +23,7 @@ function App() {
   return (
     <div className="App bg-main-bg text-white w-full min-h-screen">
       <RouterProvider router={router} />
+      <Footer />
     </div>
   );
 }
