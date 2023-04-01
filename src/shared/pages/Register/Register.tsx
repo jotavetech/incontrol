@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { Link } from "react-router-dom";
 
-import { Input } from "../../components";
+import { Input, UnloggedHead } from "../../components";
 
 export function Register() {
   const [name, setName] = useState("");
@@ -10,8 +10,9 @@ export function Register() {
   const [password, setPassword] = useState("");
 
   return (
-    <div className="flex justify-center items-center min-h-screen overflow-hidden">
-      <form className="bg-list-bg p-5 px-5 md:px-10 rounded-lg shadow-lg m-1 max-w-[300px]  md:max-w-md animeLeft">
+    <div className="flex flex-col items-center min-h-screen overflow-hidden">
+      <UnloggedHead />
+      <form className="bg-list-bg p-5 px-5 md:px-10 rounded-lg shadow-lg m-1 max-w-[300px]  md:max-w-md animeLeft mt-16 md:mt-36 mb-16">
         <h1 className="font-semibold text-xl md:text-2xl mt-1 mb-3 md:mb-5">
           Register <span className="text-secondary-color">your new</span>{" "}
           account

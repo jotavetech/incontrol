@@ -1,13 +1,13 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { Login, Register } from "./shared/pages";
+import { Login, Register, Presentation } from "./shared/pages";
 
 import { Footer } from "./shared/components";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <h1>Main</h1>,
+    element: <Presentation />,
   },
   {
     path: "/login",
