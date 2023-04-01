@@ -1,6 +1,13 @@
 import type { InputType } from "./Input.types";
 
-function Input({ type, label, id, placeholder, value, onChange }: InputType) {
+export function Input({
+  type,
+  label,
+  id,
+  placeholder,
+  value,
+  onChange,
+}: InputType) {
   return (
     <div className="flex flex-col">
       <label htmlFor={id} className="mb-1">
@@ -17,5 +24,3 @@ function Input({ type, label, id, placeholder, value, onChange }: InputType) {
     </div>
   );
 }
-
-export default Input;
