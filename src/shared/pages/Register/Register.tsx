@@ -10,10 +10,11 @@ export function Register() {
   const [password, setPassword] = useState("");
 
   return (
-    <div className="flex justify-center items-center min-h-screen">
-      <form className="bg-list-bg p-5 px-5 md:px-10 rounded-lg shadow-lg m-1 max-w-xs md:max-w-md ">
+    <div className="flex justify-center items-center min-h-screen overflow-hidden">
+      <form className="bg-list-bg p-5 px-5 md:px-10 rounded-lg shadow-lg m-1 max-w-xs md:max-w-md animeLeft">
         <h1 className="font-semibold text-xl md:text-2xl mt-2 mb-5">
-          Register on <span className="text-secondary-color">your</span> account
+          Register <span className="text-secondary-color">your new</span>{" "}
+          account
         </h1>
         <p className="mb-3 max-w-sm text-gray-300 text-sm">
           Register your new account to be able to manage your finances
