@@ -1,6 +1,6 @@
 export function Footer() {
   return (
-    <footer className="absolute bottom-0 min-w-full bg-list-bg text-center py-2 text-sm md:text-base">
+    <footer className="mt-4 absolute bottom-0 min-w-full bg-list-bg text-center py-2 text-sm md:text-base">
       <span className="text-secondary-color-2">InControl</span> | Your best
       finances manager{" "}
       <a
