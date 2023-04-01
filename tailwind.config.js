@@ -8,6 +8,7 @@ export default {
         "list-bg": "#121212",
         "item-bg": "#1C1C1C",
         "secondary-color": "#5F00FA",
+        "secondary-color-2": "#5400DE",
       },
     },
   },
