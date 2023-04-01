@@ -27,6 +27,7 @@ export function Register() {
             placeholder="Joao Vitor"
             value={name}
             type="text"
+            error=""
           />
           <Input
             id="email"
@@ -35,6 +36,7 @@ export function Register() {
             placeholder="example@email.com"
             value={email}
             type="email"
+            error=""
           />
           <Input
             id="password"
@@ -43,6 +45,7 @@ export function Register() {
             placeholder="Insert a strond password"
             value={password}
             type="password"
+            error=""
           />
         </div>
         <button

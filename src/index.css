@@ -16,6 +16,10 @@
   animation: animeFromRight 0.5s forwards;
 }
 
+.shake {
+  animation: animeShake 0.5s forwards;
+}
+
 @keyframes animeFromLeft {
   from {
     opacity: 0;
@@ -34,6 +38,24 @@
   }
   to {
     opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes animeShake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(20px);
+  }
+  50% {
+    transform: translateX(-20px);
+  }
+  75% {
+    transform: translateX(20px);
+  }
+  100% {
     transform: translateX(0);
   }
 }

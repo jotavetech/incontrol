@@ -5,4 +5,5 @@ export type InputType = {
   placeholder: string;
   value: string | number;
   onChange: ({ target }: { target: HTMLInputElement }) => void;
+  error?: string;
 };

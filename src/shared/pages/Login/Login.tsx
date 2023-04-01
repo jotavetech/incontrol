@@ -25,6 +25,7 @@ export function Login() {
             placeholder="example@email.com"
             value={email}
             type="email"
+            error=""
           />
           <Input
             id="password"
@@ -33,6 +34,7 @@ export function Login() {
             placeholder="Insert your strong password"
             value={password}
             type="password"
+            error=""
           />
         </div>
         <button
