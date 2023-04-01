@@ -19,7 +19,7 @@ export function Input({
         value={value}
         onChange={onChange}
         id={id}
-        className="bg-transparent border rounded-md p-2"
+        className="bg-transparent border rounded-md p-2 hover:border-secondary-color transition-colors"
       />
     </div>
   );
