@@ -24,7 +24,7 @@ export function Register() {
             id="username"
             label="Username"
             onChange={({ target }) => setName(target.value)}
-            placeholder="Insert your cool username"
+            placeholder="Joao Vitor"
             value={name}
             type="text"
           />
@@ -32,7 +32,7 @@ export function Register() {
             id="email"
             label="Email"
             onChange={({ target }) => setEmail(target.value)}
-            placeholder="Insert your email"
+            placeholder="example@email.com"
             value={email}
             type="email"
           />
@@ -40,7 +40,7 @@ export function Register() {
             id="password"
             label="Password"
             onChange={({ target }) => setPassword(target.value)}
-            placeholder="Insert your password"
+            placeholder="Insert a strond password"
             value={password}
             type="password"
           />

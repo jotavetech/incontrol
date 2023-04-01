@@ -22,7 +22,7 @@ export function Login() {
             id="email"
             label="Email"
             onChange={({ target }) => setEmail(target.value)}
-            placeholder="Insert your email"
+            placeholder="example@email.com"
             value={email}
             type="email"
           />
@@ -30,7 +30,7 @@ export function Login() {
             id="password"
             label="Password"
             onChange={({ target }) => setPassword(target.value)}
-            placeholder="Insert your password"
+            placeholder="Insert your strong password"
             value={password}
             type="password"
           />
