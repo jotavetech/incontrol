@@ -6,6 +6,10 @@ import { Input } from "../../components";
 
 import { validateEmail, validatePassword } from "../../utils/loginValidation";
 
+import { signInWithEmailAndPassword } from "firebase/auth";
+
+import { auth } from "../../firebase";
+
 export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,6 +17,8 @@ export function Login() {
     email: "",
     password: "",
   });
+
+  const [authFail, setAuthFail] = useState("");
 
   const validateFields = () => {
     let hasErrors = false;
@@ -40,8 +46,12 @@ export function Login() {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
 
+    setAuthFail("");
+
     if (validateFields()) {
-      return console.log("passou");
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredentials) => console.log(userCredentials))
+        .catch((error) => setAuthFail(error.message));
     }
   };
   return (
@@ -97,6 +107,7 @@ export function Login() {
             Register here
           </Link>
         </p>
+        {authFail && <p className="text-red-500 text-sm mt-2">{authFail}</p>}
       </form>
     </div>
   );

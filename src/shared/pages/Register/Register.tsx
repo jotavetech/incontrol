@@ -4,34 +4,23 @@ import { Link } from "react-router-dom";
 
 import { Input } from "../../components";
 
-import {
-  validateEmail,
-  validatePassword,
-  validateUsername,
-} from "../../utils/loginValidation";
+import { validateEmail, validatePassword } from "../../utils/loginValidation";
+
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase";
 
 export function Register() {
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({
-    username: "",
     email: "",
     password: "",
   });
 
+  const [authFail, setAuthFail] = useState("");
+
   const validateFields = () => {
     let hasErrors = false;
-
-    if (!validateUsername(name)) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        username: "Username too short",
-      }));
-      hasErrors = true;
-    } else {
-      setErrors((prevErrors) => ({ ...prevErrors, username: "" }));
-    }
 
     if (!validateEmail(email)) {
       setErrors((prevErrors) => ({ ...prevErrors, email: "Invalid email" }));
@@ -56,8 +45,16 @@ export function Register() {
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
 
+    setAuthFail("");
+
     if (validateFields()) {
-      return console.log("passou");
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          console.log(userCredential);
+        })
+        .catch((error) => {
+          setAuthFail(error.message);
+        });
     }
   };
 
@@ -66,7 +63,7 @@ export function Register() {
       <form
         onSubmit={handleRegister}
         className={`bg-list-bg p-5 px-4 md:px-10 rounded-lg shadow-lg m-1 max-w-[300px] md:max-w-md animeRight mt-16 md:mt-36 mb-16 ${
-          errors.username || errors.email || errors.password ? "shake" : ""
+          errors.email || errors.password ? "shake" : ""
         }`}
       >
         <h1 className="font-semibold text-xl md:text-2xl mt-1 mb-3 md:mb-5">
@@ -77,15 +74,6 @@ export function Register() {
           Register your new account to be able to manage your finances
         </p>
         <div className="flex flex-col gap-2 md:gap-5">
-          <Input
-            id="username"
-            label="Username"
-            onChange={({ target }) => setName(target.value)}
-            placeholder="Joao Vitor"
-            value={name}
-            type="text"
-            error={errors.username}
-          />
           <Input
             id="email"
             label="Email"
@@ -99,7 +87,7 @@ export function Register() {
             id="password"
             label="Password"
             onChange={({ target }) => setPassword(target.value)}
-            placeholder="Insert a strond password"
+            placeholder="Insert a strong password"
             value={password}
             type="password"
             error={errors.password}
@@ -113,7 +101,7 @@ export function Register() {
           Register with Google
         </button>
         <button
-          disabled={!email || !name || !password}
+          disabled={!email || !password}
           className="bg-secondary-color px-4 py-2 text-sm mt-2 md:px-6 md:py-2 md:mt-5 md:text-base rounded-md hover:bg-secondary-color-2 hover:pr-20 transition-all disabled:opacity-60 disabled:cursor-default disabled:hover:pr-4 md:disabled:hover:pr-6 disabled:hover:bg-secondary-color"
         >
           Register
@@ -124,6 +112,7 @@ export function Register() {
             Login here
           </Link>
         </p>
+        {authFail && <p className="text-red-500 text-sm mt-2">{authFail}</p>}
       </form>
     </div>
   );
