@@ -4,13 +4,52 @@ import { Link } from "react-router-dom";
 
 import { Input } from "../../components";
 
+import { validateEmail, validatePassword } from "../../utils/loginValidation";
+
 export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({
+    email: "",
+    password: "",
+  });
 
+  const validateFields = () => {
+    let hasErrors = false;
+
+    if (!validateEmail(email)) {
+      setErrors((prevErrors) => ({ ...prevErrors, email: "Invalid email" }));
+      hasErrors = true;
+    } else {
+      setErrors((prevErrors) => ({ ...prevErrors, email: "" }));
+    }
+
+    if (!validatePassword(password)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        password: "Password too short",
+      }));
+      hasErrors = true;
+    } else {
+      setErrors((prevErrors) => ({ ...prevErrors, password: "" }));
+    }
+
+    return !hasErrors;
+  };
+
+  const handleRegister = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (validateFields()) {
+      return console.log("passou");
+    }
+  };
   return (
     <div className="flex flex-col items-center min-h-screen overflow-hidden pt-14 md:pt-24 ">
-      <form className="bg-list-bg p-5 px-4 md:px-10 rounded-lg shadow-lg m-1 max-w-[300px] md:max-w-md animeRight mt-16 md:mt-36 mb-16">
+      <form
+        onSubmit={handleRegister}
+        className="bg-list-bg p-5 px-4 md:px-10 rounded-lg shadow-lg m-1 max-w-[300px] md:max-w-md animeRight mt-16 md:mt-36 mb-16"
+      >
         <h1 className="font-semibold text-xl md:text-2xl mt-1 mb-3 md:mb-5">
           Login on <span className="text-secondary-color">your</span> account
         </h1>
@@ -25,7 +64,7 @@ export function Login() {
             placeholder="example@email.com"
             value={email}
             type="email"
-            error=""
+            error={errors.email}
           />
           <Input
             id="password"
@@ -34,7 +73,7 @@ export function Login() {
             placeholder="Insert your strong password"
             value={password}
             type="password"
-            error=""
+            error={errors.password}
           />
         </div>
         <button

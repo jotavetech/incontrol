@@ -1,8 +1,15 @@
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Outlet,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
 
 import { Login, Register, Presentation } from "./shared/pages";
 
 import { Footer, Header } from "./shared/components";
+
+import { ProtectedRoute } from "./ProtectedRoute";
 
 function Layout() {
   return (
@@ -21,7 +28,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Presentation />,
+        element: (
+          <ProtectedRoute>
+            <Presentation />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/login",
