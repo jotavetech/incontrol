@@ -70,7 +70,7 @@ export function Login() {
       <form
         onSubmit={handleLogin}
         className={`bg-list-bg p-5 px-4 md:px-10 rounded-lg shadow-lg m-1 max-w-[300px] md:max-w-md animeRight mt-16 md:mt-36 mb-16 ${
-          errors.email || errors.password ? "shake" : ""
+          errors.email || errors.password || authFail ? "shake" : ""
         }`}
       >
         <h1 className="font-semibold text-xl md:text-2xl mt-1 mb-3 md:mb-5">
