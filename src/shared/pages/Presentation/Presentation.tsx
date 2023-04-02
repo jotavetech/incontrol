@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export function Presentation() {
   return (
     <div>
-      <section className="text-center mt-10 md:mt-32 flex flex-col items-center px-4">
+      <section className="text-center mt-10 pt-24 md:pt-36 flex flex-col items-center px-4">
         <h1 className="text-3xl md:text-5xl font-semibold">
           Welcome to <span className="text-secondary-color">inControl</span>
         </h1>

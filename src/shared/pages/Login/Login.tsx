@@ -9,7 +9,7 @@ export function Login() {
   const [password, setPassword] = useState("");
 
   return (
-    <div className="flex flex-col items-center min-h-screen overflow-hidden">
+    <div className="flex flex-col items-center min-h-screen overflow-hidden pt-14 md:pt-24 ">
       <form className="bg-list-bg p-5 px-4 md:px-10 rounded-lg shadow-lg m-1 max-w-[300px] md:max-w-md animeRight mt-16 md:mt-36 mb-16">
         <h1 className="font-semibold text-xl md:text-2xl mt-1 mb-3 md:mb-5">
           Login on <span className="text-secondary-color">your</span> account
