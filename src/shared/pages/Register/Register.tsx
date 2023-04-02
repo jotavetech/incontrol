@@ -65,7 +65,9 @@ export function Register() {
     <div className="flex flex-col items-center min-h-screen overflow-hidden pt-14 md:pt-24">
       <form
         onSubmit={handleRegister}
-        className="bg-list-bg p-5 px-5 md:px-10 rounded-lg shadow-lg m-1 max-w-[300px]  md:max-w-md animeLeft mt-16 md:mt-28 mb-16"
+        className={`bg-list-bg p-5 px-4 md:px-10 rounded-lg shadow-lg m-1 max-w-[300px] md:max-w-md animeRight mt-16 md:mt-36 mb-16 ${
+          errors.username || errors.email || errors.password ? "shake" : ""
+        }`}
       >
         <h1 className="font-semibold text-xl md:text-2xl mt-1 mb-3 md:mb-5">
           Register <span className="text-secondary-color">your new</span>{" "}
@@ -110,7 +112,10 @@ export function Register() {
           <img src="/assets/img/google.svg" className="w-5" />
           Register with Google
         </button>
-        <button className="bg-secondary-color px-4 py-2 text-sm mt-2 md:px-6 md:py-2 md:mt-5 md:text-base rounded-md hover:bg-secondary-color-2 hover:pr-20 transition-all">
+        <button
+          disabled={!email || !name || !password}
+          className="bg-secondary-color px-4 py-2 text-sm mt-2 md:px-6 md:py-2 md:mt-5 md:text-base rounded-md hover:bg-secondary-color-2 hover:pr-20 transition-all disabled:opacity-60 disabled:cursor-default disabled:hover:pr-4 md:disabled:hover:pr-6 disabled:hover:bg-secondary-color"
+        >
           Register
         </button>
         <p className="mt-2 text-sm md:text-base">

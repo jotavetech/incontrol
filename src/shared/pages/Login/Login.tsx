@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
 
@@ -37,7 +37,7 @@ export function Login() {
     return !hasErrors;
   };
 
-  const handleRegister = (e: React.FormEvent) => {
+  const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
 
     if (validateFields()) {
@@ -45,10 +45,12 @@ export function Login() {
     }
   };
   return (
-    <div className="flex flex-col items-center min-h-screen overflow-hidden pt-14 md:pt-24 ">
+    <div className="flex flex-col items-center min-h-screen overflow-hidden pt-14 md:pt-24">
       <form
-        onSubmit={handleRegister}
-        className="bg-list-bg p-5 px-4 md:px-10 rounded-lg shadow-lg m-1 max-w-[300px] md:max-w-md animeRight mt-16 md:mt-36 mb-16"
+        onSubmit={handleLogin}
+        className={`bg-list-bg p-5 px-4 md:px-10 rounded-lg shadow-lg m-1 max-w-[300px] md:max-w-md animeRight mt-16 md:mt-36 mb-16 ${
+          errors.email || errors.password ? "shake" : ""
+        }`}
       >
         <h1 className="font-semibold text-xl md:text-2xl mt-1 mb-3 md:mb-5">
           Login on <span className="text-secondary-color">your</span> account
@@ -83,7 +85,10 @@ export function Login() {
           <img src="/assets/img/google.svg" className="w-5" />
           Login with Google
         </button>
-        <button className="bg-secondary-color px-4 py-2 text-sm mt-2 md:px-6 md:py-2 md:mt-5 md:text-base rounded-md hover:bg-secondary-color-2 hover:pr-20 transition-all">
+        <button
+          disabled={!email || !password}
+          className="bg-secondary-color px-4 py-2 text-sm mt-2 md:px-6 md:py-2 md:mt-5 md:text-base rounded-md hover:bg-secondary-color-2 hover:pr-20 transition-all disabled:opacity-60 disabled:cursor-default disabled:hover:pr-4 md:disabled:hover:pr-6 disabled:hover:bg-secondary-color"
+        >
           Login
         </button>
         <p className="mt-2 text-sm md:text-base">
