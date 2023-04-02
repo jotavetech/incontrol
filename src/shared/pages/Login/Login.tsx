@@ -6,9 +6,9 @@ import { Input } from "../../components";
 
 import { validateEmail, validatePassword } from "../../utils/loginValidation";
 
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 
-import { auth } from "../../firebase";
+import { auth, provider } from "../../firebase";
 
 export function Login() {
   const [email, setEmail] = useState("");
@@ -54,6 +54,17 @@ export function Login() {
         .catch((error) => setAuthFail(error.message));
     }
   };
+
+  const handleGoogleLogin = () => {
+    setAuthFail("");
+
+    signInWithPopup(auth, provider)
+      .then((userCredential) => console.log(userCredential))
+      .catch((error) => {
+        setAuthFail(error.message);
+      });
+  };
+
   return (
     <div className="flex flex-col items-center min-h-screen overflow-hidden pt-14 md:pt-24">
       <form
@@ -90,10 +101,11 @@ export function Login() {
         </div>
         <button
           type="button"
-          className="flex gap-2 justify-center items-center mt-3 bg-white p-1 md:p-2 w-full rounded-md text-black font-semibold"
+          onClick={handleGoogleLogin}
+          className="flex gap-2 justify-center items-center mt-3 bg-white p-1 md:p-2 w-full rounded-md text-black font-semibold text-sm"
         >
           <img src="/assets/img/google.svg" className="w-5" />
-          Login with Google
+          Login or Register with Google
         </button>
         <button
           disabled={!email || !password}

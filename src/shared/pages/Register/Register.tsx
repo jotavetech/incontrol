@@ -6,8 +6,9 @@ import { Input } from "../../components";
 
 import { validateEmail, validatePassword } from "../../utils/loginValidation";
 
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase";
+import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+
+import { auth, provider } from "../../firebase";
 
 export function Register() {
   const [email, setEmail] = useState("");
@@ -58,6 +59,16 @@ export function Register() {
     }
   };
 
+  const handleGoogleRegister = () => {
+    setAuthFail("");
+
+    signInWithPopup(auth, provider)
+      .then((userCredential) => console.log(userCredential))
+      .catch((error) => {
+        setAuthFail(error.message);
+      });
+  };
+
   return (
     <div className="flex flex-col items-center min-h-screen overflow-hidden pt-14 md:pt-24">
       <form
@@ -95,10 +106,11 @@ export function Register() {
         </div>
         <button
           type="button"
-          className="flex gap-2 justify-center items-center mt-3 bg-white p-1 md:p-2 w-full rounded-md text-black font-semibold"
+          onClick={handleGoogleRegister}
+          className="flex gap-2 justify-center items-center mt-3 bg-white p-1 md:p-2 w-full rounded-md text-black font-semibold  text-sm"
         >
           <img src="/assets/img/google.svg" className="w-5" />
-          Register with Google
+          Login or Register with Google
         </button>
         <button
           disabled={!email || !password}
