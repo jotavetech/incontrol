@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { Link } from "react-router-dom";
 
-import { Input, UnloggedHead } from "../../components";
+import { Input } from "../../components";
 
 export function Login() {
   const [email, setEmail] = useState("");
@@ -10,7 +10,6 @@ export function Login() {
 
   return (
     <div className="flex flex-col items-center min-h-screen overflow-hidden">
-      <UnloggedHead />
       <form className="bg-list-bg p-5 px-4 md:px-10 rounded-lg shadow-lg m-1 max-w-[300px] md:max-w-md animeRight mt-16 md:mt-36 mb-16">
         <h1 className="font-semibold text-xl md:text-2xl mt-1 mb-3 md:mb-5">
           Login on <span className="text-secondary-color">your</span> account
