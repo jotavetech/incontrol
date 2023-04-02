@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export function UnloggedHead() {
+export function Header() {
   return (
     <header className="w-full bg-list-bg h-16 md:h-20 flex items-center fixed top-0">
       <nav className="flex items-center justify-between w-full md:w-[1200px] p-5 md:p-20 mx-auto">

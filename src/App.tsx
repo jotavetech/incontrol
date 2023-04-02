@@ -2,12 +2,12 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 
 import { Login, Register, Presentation } from "./shared/pages";
 
-import { Footer, UnloggedHead } from "./shared/components";
+import { Footer, Header } from "./shared/components";
 
 function Layout() {
   return (
     <div>
-      <UnloggedHead />
+      <Header />
       <Outlet />
       <Footer />
     </div>
