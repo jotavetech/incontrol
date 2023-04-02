@@ -18,6 +18,8 @@ export function Register() {
     password: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   const [authFail, setAuthFail] = useState("");
 
   const validateFields = () => {
@@ -46,6 +48,7 @@ export function Register() {
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
 
+    setLoading(true);
     setAuthFail("");
 
     if (validateFields()) {
@@ -55,18 +58,21 @@ export function Register() {
         })
         .catch((error) => {
           setAuthFail(error.message);
-        });
+        })
+        .finally(() => setLoading(false));
     }
   };
 
   const handleGoogleRegister = () => {
     setAuthFail("");
+    setLoading(true);
 
     signInWithPopup(auth, provider)
       .then((userCredential) => console.log(userCredential))
       .catch((error) => {
         setAuthFail(error.message);
-      });
+      })
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -93,6 +99,7 @@ export function Register() {
             value={email}
             type="email"
             error={errors.email}
+            disabled={loading}
           />
           <Input
             id="password"
@@ -102,6 +109,7 @@ export function Register() {
             value={password}
             type="password"
             error={errors.password}
+            disabled={loading}
           />
         </div>
         <button
@@ -113,7 +121,7 @@ export function Register() {
           Login or Register with Google
         </button>
         <button
-          disabled={!email || !password}
+          disabled={!email || !password || loading}
           className="bg-secondary-color px-4 py-2 text-sm mt-2 md:px-6 md:py-2 md:mt-5 md:text-base rounded-md hover:bg-secondary-color-2 hover:pr-20 transition-all disabled:opacity-60 disabled:cursor-default disabled:hover:pr-4 md:disabled:hover:pr-6 disabled:hover:bg-secondary-color"
         >
           Register

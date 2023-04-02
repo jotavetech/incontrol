@@ -8,6 +8,7 @@ export function Input({
   value,
   onChange,
   error,
+  disabled,
 }: InputType) {
   return (
     <div className="flex flex-col">
@@ -23,7 +24,8 @@ export function Input({
         value={value}
         onChange={onChange}
         id={id}
-        className={`bg-transparent border rounded-md px-2 p-1 md:p-2 hover:border-secondary-color transition-colors ${
+        disabled={disabled}
+        className={`bg-transparent border rounded-md px-2 p-1 md:p-2 hover:border-secondary-color transition-colors disabled:hover:border-white disabled:opacity-70 ${
           error && " border-red-500"
         }`}
       />

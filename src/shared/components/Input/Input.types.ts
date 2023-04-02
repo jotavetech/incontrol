@@ -6,4 +6,5 @@ export type InputType = {
   value: string | number;
   onChange: ({ target }: { target: HTMLInputElement }) => void;
   error?: string;
+  disabled?: boolean;
 };
