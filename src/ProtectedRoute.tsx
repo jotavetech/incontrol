@@ -1,8 +1,19 @@
+import { useAuthState } from "react-firebase-hooks/auth";
+
 import { Navigate } from "react-router-dom";
 
-export function ProtectedRoute({ children }: { children: JSX.Element }) {
-  const auth = true;
+import { auth } from "./shared/firebase";
 
-  if (auth) return children;
-  return <Navigate to="login" />;
+export function ProtectedRoute({ children }: { children: JSX.Element }) {
+  const [user] = useAuthState(auth);
+
+  if (user) return children;
+  return <Navigate to="/login" />;
+}
+
+export function UnloggedRoute({ children }: { children: JSX.Element }) {
+  const [user] = useAuthState(auth);
+
+  if (!user) return children;
+  return <Navigate to="/home" />;
 }

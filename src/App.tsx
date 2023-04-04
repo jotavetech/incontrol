@@ -5,11 +5,11 @@ import {
   Navigate,
 } from "react-router-dom";
 
-import { Login, Register, Presentation } from "./shared/pages";
+import { Login, Register, Presentation, Home } from "./shared/pages";
 
 import { Footer, Header } from "./shared/components";
 
-import { ProtectedRoute } from "./ProtectedRoute";
+import { ProtectedRoute, UnloggedRoute } from "./ProtectedRoute";
 
 function Layout() {
   return (
@@ -29,18 +29,34 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: (
-          <ProtectedRoute>
+          <UnloggedRoute>
             <Presentation />
+          </UnloggedRoute>
+        ),
+      },
+      {
+        path: "/home",
+        element: (
+          <ProtectedRoute>
+            <Home />
           </ProtectedRoute>
         ),
       },
       {
         path: "/login",
-        element: <Login />,
+        element: (
+          <UnloggedRoute>
+            <Login />
+          </UnloggedRoute>
+        ),
       },
       {
         path: "/register",
-        element: <Register />,
+        element: (
+          <UnloggedRoute>
+            <Register />
+          </UnloggedRoute>
+        ),
       },
     ],
   },
