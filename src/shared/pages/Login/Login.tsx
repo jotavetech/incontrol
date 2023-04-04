@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { Link } from "react-router-dom";
 
@@ -48,10 +48,10 @@ export function Login() {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
 
-    setLoading(true);
     setAuthFail("");
 
     if (validateFields()) {
+      setLoading(true);
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredentials) => console.log(userCredentials))
         .catch((error) => setAuthFail(error.message))
@@ -60,14 +60,16 @@ export function Login() {
   };
 
   const handleGoogleLogin = () => {
+    setLoading(true);
     setAuthFail("");
 
     signInWithPopup(auth, provider)
       .then((userCredential) => console.log(userCredential))
       .catch((error) => {
         setAuthFail(error.message);
-      })
-      .finally(() => setLoading(false));
+      });
+
+    setLoading(false);
   };
 
   return (

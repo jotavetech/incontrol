@@ -48,10 +48,10 @@ export function Register() {
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
 
-    setLoading(true);
     setAuthFail("");
 
     if (validateFields()) {
+      setLoading(true);
       createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           console.log(userCredential);
@@ -64,8 +64,8 @@ export function Register() {
   };
 
   const handleGoogleRegister = () => {
-    setAuthFail("");
     setLoading(true);
+    setAuthFail("");
 
     signInWithPopup(auth, provider)
       .then((userCredential) => console.log(userCredential))
