@@ -5,6 +5,7 @@ import { GiPayMoney, GiReceiveMoney } from "react-icons/gi";
 import { AiOutlineHome, AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
 import { useNavigate } from "react-router-dom";
+import { MenuItem } from "../MenuItem/MenuItem";
 
 export function Menu() {
   const [opened, setOpened] = useState(false);
@@ -44,42 +45,22 @@ export function Menu() {
         </div>
         <nav className="p-5">
           <ul className="flex flex-col gap-4 items-center">
-            <li>
-              <button
-                onClick={() => handleNavigate("/home")}
-                className="py-2 px-5 bg-item-bg rounded-lg w-36 md:w-44 flex items-center gap-2 justify-between text-sm md:text-base hover:bg-secondary-color"
-              >
-                Home
-                <AiOutlineHome />
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => handleNavigate("/entries")}
-                className="py-2 px-5 bg-item-bg rounded-lg w-36 md:w-44 flex items-center gap-2 justify-between text-sm md:text-base hover:bg-secondary-color"
-              >
-                Entries
-                <GiReceiveMoney />
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => handleNavigate("/spents")}
-                className="py-2 px-5 bg-item-bg rounded-lg w-36 md:w-44 flex items-center gap-2 justify-between text-sm md:text-base hover:bg-secondary-color"
-              >
-                Spents
-                <GiPayMoney />
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => handleNavigate("/piggybank")}
-                className="py-2 px-5 bg-item-bg rounded-lg w-36 md:w-44 flex items-center gap-2 justify-between text-sm md:text-base hover:bg-secondary-color"
-              >
-                Piggy Bank
-                <BsPiggyBank />
-              </button>
-            </li>
+            <MenuItem handleNavigate={() => handleNavigate("/home")}>
+              Home
+              <AiOutlineHome />
+            </MenuItem>
+            <MenuItem handleNavigate={() => handleNavigate("/entries")}>
+              Entries
+              <GiReceiveMoney />
+            </MenuItem>
+            <MenuItem handleNavigate={() => handleNavigate("/spents")}>
+              Spents
+              <GiPayMoney />
+            </MenuItem>
+            <MenuItem handleNavigate={() => handleNavigate("/piggybank")}>
+              Piggy Bank
+              <BsPiggyBank />
+            </MenuItem>
           </ul>
         </nav>
       </aside>
