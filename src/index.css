@@ -16,12 +16,12 @@
   animation: animeFromRight 0.5s forwards;
 }
 
-.shake {
-  animation: animeShake 0.5s forwards;
-}
-
 .animeOpenMenu {
   animation: animeMenu 0.2s backwards;
+}
+
+.shake {
+  animation: animeShake 0.5s forwards;
 }
 
 @keyframes animeMenu {
