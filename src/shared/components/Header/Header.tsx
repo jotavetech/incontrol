@@ -8,12 +8,10 @@ import { signOut } from "firebase/auth";
 
 import { useNavigate } from "react-router-dom";
 
-import { useState } from "react";
+import { BiExit } from "react-icons/bi";
 
 export function Header() {
   const [user] = useAuthState(auth);
-
-  const [opened, setOpened] = useState(false);
 
   const navigate = useNavigate();
 
@@ -61,6 +59,7 @@ export function Header() {
                   className="bg-secondary-color text-sm md:text-base w-20 h-7 md:w-24 flex justify-center items-center rounded-2xl hover:bg-secondary-color-2 transition-colors"
                 >
                   Exit
+                  <BiExit className="ml-2" />
                 </button>
               </>
             )}
