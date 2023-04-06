@@ -1,14 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import { MenuItem } from "../";
+
+import { useNavigate } from "react-router-dom";
 
 import { BsPiggyBank } from "react-icons/bs";
 import { GiPayMoney, GiReceiveMoney } from "react-icons/gi";
 import { AiOutlineHome, AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
-import { useNavigate } from "react-router-dom";
-import { MenuItem } from "../MenuItem/MenuItem";
+import { getTime } from "../../utils/getTime";
 
 export function Menu() {
   const [opened, setOpened] = useState(false);
+  const [actualTime, setActualTime] = useState("");
 
   const navigate = useNavigate();
 
@@ -16,6 +20,10 @@ export function Menu() {
     setOpened(false);
     navigate(link);
   };
+
+  useEffect(() => {
+    setActualTime(() => getTime());
+  }, []);
 
   return (
     <>
@@ -40,7 +48,7 @@ export function Menu() {
             <AiOutlineClose />
           </button>
           <p className="text-xl font-semibold text-center">
-            Good <span className="text-secondary-color">something</span>
+            Good <span className="text-secondary-color">{actualTime}!</span>
           </p>
         </div>
         <nav className="p-5">
