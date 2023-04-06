@@ -1,11 +1,6 @@
-import {
-  createBrowserRouter,
-  Outlet,
-  RouterProvider,
-  Navigate,
-} from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 
-import { Login, Register, Presentation, Home } from "./shared/pages";
+import { Login, Register, Presentation, Home, Error } from "./shared/pages";
 
 import { Footer, Header } from "./shared/components";
 
@@ -57,6 +52,10 @@ const router = createBrowserRouter([
             <Register />
           </UnloggedRoute>
         ),
+      },
+      {
+        path: "*",
+        element: <Error />,
       },
     ],
   },
