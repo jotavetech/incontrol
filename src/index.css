@@ -20,6 +20,19 @@
   animation: animeShake 0.5s forwards;
 }
 
+.animeOpenMenu {
+  animation: animeMenu 0.2s backwards;
+}
+
+@keyframes animeMenu {
+  from {
+    transform: translateX(-300px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 @keyframes animeFromLeft {
   from {
     opacity: 0;
