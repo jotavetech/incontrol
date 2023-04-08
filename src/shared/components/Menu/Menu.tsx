@@ -36,7 +36,7 @@ export function Menu() {
         <AiOutlineMenu />
       </button>
       <aside
-        className={`animeOpenMenu pt-16 md:pt-28 p-2 bg-list-bg h-screen w-48 md:w-60 ${
+        className={`animeOpenMenu pt-16 md:pt-28 p-2 bg-list-bg h-screen w-48 md:w-60 absolute shadow-lg ${
           opened ? "block" : "hidden"
         } lg:block z-40`}
       >
