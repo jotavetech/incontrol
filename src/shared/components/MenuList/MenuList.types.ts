@@ -1,4 +1,4 @@
 export type MenuListType = {
   type: "spents" | "entries";
-  children: JSX.Element;
+  children: JSX.Element | JSX.Element[];
 };

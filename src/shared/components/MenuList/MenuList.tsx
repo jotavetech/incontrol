@@ -6,6 +6,7 @@ export function MenuList({ type, children }: MenuListType) {
       <h1 className="absolute -top-10 font-semibold text-xl left-2">
         {type === "entries" ? "Entries" : "Spents"}
       </h1>
+      {children}
     </div>
   );
 }

@@ -1,4 +1,55 @@
-import { HeadMenu, Menu, MenuList, ResumeItems } from "../../components";
+import {
+  HeadMenu,
+  Menu,
+  MenuList,
+  MenuListItem,
+  ResumeItems,
+} from "../../components";
+
+const fakeItemsData = [
+  {
+    title: "money 1",
+    date: "10/12/2023",
+    value: 5000,
+    id: "2",
+  },
+  {
+    title: "money 2",
+    date: "10/12/2023",
+    value: 5000,
+    id: "3",
+  },
+  {
+    title: "money 3",
+    date: "10/12/2023",
+    value: 5000,
+    id: "4",
+  },
+  {
+    title: "money 4",
+    date: "10/12/2023",
+    value: 5000,
+    id: "5",
+  },
+  {
+    title: "money 4",
+    date: "10/12/2023",
+    value: 5000,
+    id: "6",
+  },
+  {
+    title: "money 4",
+    date: "10/12/2023",
+    value: 5000,
+    id: "7",
+  },
+  {
+    title: "money 4",
+    date: "10/12/2023",
+    value: 5000,
+    id: "8",
+  },
+];
 
 export function Home() {
   return (
@@ -15,12 +66,7 @@ export function Home() {
               <p className="text-gray-100 text-sm md:text-base">
                 Here is a summary of your finances
               </p>
-              <ResumeItems
-                entries={100}
-                spents={50}
-                piggyBank={500}
-                remaining={50}
-              />
+              <ResumeItems entries={0} spents={0} piggyBank={0} remaining={0} />
             </HeadMenu>
             <HeadMenu>
               <div className="flex flex-col items-center">
@@ -40,10 +86,44 @@ export function Home() {
           </div>
           <div className="flex flex-col md:flex-row gap-16 md:gap-10 mt-16 pb-10">
             <MenuList type="entries">
-              <h1>placeholder</h1>
+              <div className="flex flex-col gap-3 overflow-y-auto h-full">
+                {fakeItemsData ? (
+                  fakeItemsData.map((item) => (
+                    <MenuListItem
+                      key={item.id}
+                      date={item.date}
+                      id={item.id}
+                      title={item.title}
+                      value={item.value}
+                      type="entry"
+                    />
+                  ))
+                ) : (
+                  <span className="text-center pt-20 text-2xl text-gray-600 block">
+                    Nothing found
+                  </span>
+                )}
+              </div>
             </MenuList>
             <MenuList type="spents">
-              <h1>placeholder</h1>
+              <div className="flex flex-col gap-3 overflow-y-auto h-full">
+                {fakeItemsData ? (
+                  fakeItemsData.map((item) => (
+                    <MenuListItem
+                      key={item.id}
+                      date={item.date}
+                      id={item.id}
+                      title={item.title}
+                      value={item.value}
+                      type="spent"
+                    />
+                  ))
+                ) : (
+                  <span className="text-center pt-20 text-2xl text-gray-600 block">
+                    Nothing found
+                  </span>
+                )}
+              </div>
             </MenuList>
           </div>
         </div>
