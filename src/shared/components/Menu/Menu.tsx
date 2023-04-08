@@ -31,7 +31,7 @@ export function Menu() {
         onClick={() => setOpened(true)}
         className={` ${
           opened ? "hidden" : "fixed"
-        } lg:hidden right-10 bottom-20 z-50 bg-item-bg p-2 rounded-full shadow-sm`}
+        } lg:hidden right-10 bottom-20 z-50 bg-secondary-color-2 p-2 rounded-full shadow-lg`}
       >
         <AiOutlineMenu />
       </button>
