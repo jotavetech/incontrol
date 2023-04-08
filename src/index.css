@@ -72,3 +72,18 @@
     transform: translateX(0);
   }
 }
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #333;
+  border-radius: 15px;
+}
+::-webkit-scrollbar-thumb {
+  background: #5f00fa;
+  border-radius: 15px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
