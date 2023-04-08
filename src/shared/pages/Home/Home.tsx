@@ -55,9 +55,9 @@ export function Home() {
   return (
     <>
       <Menu />
-      <div className="pt-16 md:pt-24">
+      <div className="pt-16 md:pt-24 overflow-hidden">
         <div className="p-4 lg:pl-64 flex flex-col">
-          <div className="flex flex-col md:flex-row gap-5 md:gap-10">
+          <div className="flex flex-col md:flex-row gap-5 md:gap-10 animeRight">
             <HeadMenu>
               <h1 className="text-xl md:text-2xl font-semibold">
                 <span className="text-secondary-color">Hello,</span> it's good
@@ -84,7 +84,7 @@ export function Home() {
               </div>
             </HeadMenu>
           </div>
-          <div className="flex flex-col md:flex-row gap-16 md:gap-10 mt-16 pb-10">
+          <div className="flex flex-col md:flex-row gap-16 md:gap-10 mt-16 pb-10 animeLeft">
             <MenuList type="entries">
               <div className="flex flex-col gap-3 overflow-y-auto h-full">
                 {fakeItemsData ? (
