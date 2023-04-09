@@ -5,6 +5,7 @@ export { Header } from "./Header/Header";
 export { MenuList } from "./MenuList/MenuList";
 export { MenuItem } from "./MenuItem/MenuItem";
 export { HeadMenu } from "./HeadMenu/HeadMenu";
+export { EditForm } from "./EditForm/EditForm";
 export { FilterMenu } from "./FilterMenu/FilterMenu";
 export { ResumeItems } from "./ResumeItems/ResumeItems";
 export { MenuListItem } from "./MenuListItem/MenuListItem";
