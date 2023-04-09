@@ -1,54 +1,10 @@
+import { itemsData } from "../../../mocks";
 import {
   HeadMenu,
   MenuList,
   MenuListItem,
   ResumeItems,
 } from "../../components";
-
-const fakeItemsData = [
-  {
-    title: "money 1",
-    date: "10/12/2023",
-    value: 5000,
-    id: "2",
-  },
-  {
-    title: "money 2",
-    date: "10/12/2023",
-    value: 5000,
-    id: "3",
-  },
-  {
-    title: "money 3",
-    date: "10/12/2023",
-    value: 5000,
-    id: "4",
-  },
-  {
-    title: "money 4",
-    date: "10/12/2023",
-    value: 5000,
-    id: "5",
-  },
-  {
-    title: "money 4",
-    date: "10/12/2023",
-    value: 5000,
-    id: "6",
-  },
-  {
-    title: "money 4",
-    date: "10/12/2023",
-    value: 5000,
-    id: "7",
-  },
-  {
-    title: "money 4",
-    date: "10/12/2023",
-    value: 5000,
-    id: "8",
-  },
-];
 
 export function Home() {
   return (
@@ -85,8 +41,8 @@ export function Home() {
           <div className="flex flex-col md:flex-row gap-16 md:gap-10 mt-16 pb-10 animeLeft">
             <MenuList type="entries">
               <div className="flex flex-col gap-3 overflow-y-auto h-full">
-                {fakeItemsData ? (
-                  fakeItemsData.map((item) => (
+                {itemsData ? (
+                  itemsData.map((item) => (
                     <MenuListItem
                       key={item.id}
                       date={item.date}
@@ -105,8 +61,8 @@ export function Home() {
             </MenuList>
             <MenuList type="spents">
               <div className="flex flex-col gap-3 overflow-y-auto h-full">
-                {fakeItemsData ? (
-                  fakeItemsData.map((item) => (
+                {itemsData ? (
+                  itemsData.map((item) => (
                     <MenuListItem
                       key={item.id}
                       date={item.date}
