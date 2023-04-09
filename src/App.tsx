@@ -1,6 +1,14 @@
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 
-import { Login, Register, Presentation, Home, Error } from "./shared/pages";
+import {
+  Login,
+  Register,
+  Presentation,
+  Home,
+  Error,
+  Entries,
+  Spents,
+} from "./shared/pages";
 
 import { Footer, Header } from "./shared/components";
 
@@ -34,6 +42,22 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <Home />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/entries",
+        element: (
+          <ProtectedRoute>
+            <Entries />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/spents",
+        element: (
+          <ProtectedRoute>
+            <Spents />
           </ProtectedRoute>
         ),
       },
