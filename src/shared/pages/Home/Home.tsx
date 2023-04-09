@@ -1,6 +1,5 @@
 import {
   HeadMenu,
-  Menu,
   MenuList,
   MenuListItem,
   ResumeItems,
@@ -54,7 +53,6 @@ const fakeItemsData = [
 export function Home() {
   return (
     <>
-      <Menu />
       <div className="pt-16 md:pt-24 overflow-hidden">
         <div className="p-4 lg:pl-64 flex flex-col">
           <div className="flex flex-col md:flex-row gap-5 md:gap-10 animeRight">

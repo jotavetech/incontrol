@@ -10,7 +10,7 @@ import {
   Spents,
 } from "./shared/pages";
 
-import { Footer, Header } from "./shared/components";
+import { Footer, Header, Menu } from "./shared/components";
 
 import { ProtectedRoute, UnloggedRoute } from "./ProtectedRoute";
 
@@ -18,6 +18,7 @@ function Layout() {
   return (
     <div>
       <Header />
+      <Menu />
       <Outlet />
       <Footer />
     </div>
