@@ -4,16 +4,21 @@ import { EditForm } from "../";
 
 import { DetailedListType } from "./DetailedList.types";
 
+import { useState } from "react";
+
 const itemsData2 = [...itemsData, ...itemsData];
 
 export function DetailedList({ type }: DetailedListType) {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <>
-      <EditForm />
+      <EditForm open={menuOpen} onClose={() => setMenuOpen(false)} />
       <div className="animeRight">
         <ul className="lg:min-w-[700px] mt-5 md:mt-10 bg-list-bg p-2 rounded-xl overflow-y-scroll h-[350px] lg:h-[400px] flex flex-col gap-3">
           {itemsData2.map((item) => (
             <li
+              onClick={() => setMenuOpen(true)}
               key={item.id}
               className="flex justify-around gap-2 bg-item-bg p-4 md:p-2 rounded-xl items-center hover:brightness-125 hover:cursor-pointer"
             >

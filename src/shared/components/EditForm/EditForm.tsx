@@ -2,10 +2,18 @@ import { Input } from "../";
 
 import { useState } from "react";
 
-export function EditForm() {
+export function EditForm({
+  open,
+  onClose,
+}: {
+  open: boolean;
+  onClose: () => void;
+}) {
   const [title, setTitle] = useState("Title");
   const [description, setDescription] = useState("Description");
   const [value, setValue] = useState(0);
+
+  if (!open) return null;
 
   return (
     <div className="fixed w-screen h-screen top-0 left-0 z-20">
@@ -45,6 +53,7 @@ export function EditForm() {
                 Save
               </button>
               <button
+                onClick={onClose}
                 type="button"
                 className="bg-item-bg px-4 py-2 w-32 text-sm mt-2 md:px-6 md:py-2 md:mt-5 md:text-base rounded-md hover:brightness-125"
               >
