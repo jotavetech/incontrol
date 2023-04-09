@@ -6,7 +6,7 @@ const itemsData2 = [...itemsData, ...itemsData];
 
 export function DetailedList({ type }: DetailedListType) {
   return (
-    <div>
+    <div className="animeRight">
       <ul className="lg:min-w-[700px] mt-5 md:mt-10 bg-list-bg p-2 rounded-xl overflow-y-scroll h-[350px] lg:h-[400px] flex flex-col gap-3">
         {itemsData2.map((item) => (
           <li
