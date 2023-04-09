@@ -8,3 +8,4 @@ export { HeadMenu } from "./HeadMenu/HeadMenu";
 export { FilterMenu } from "./FilterMenu/FilterMenu";
 export { ResumeItems } from "./ResumeItems/ResumeItems";
 export { MenuListItem } from "./MenuListItem/MenuListItem";
+export { DetailedList } from "./DetailedList/DetailedList";

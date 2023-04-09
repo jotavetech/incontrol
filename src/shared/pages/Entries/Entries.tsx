@@ -1,4 +1,4 @@
-import { FilterMenu } from "../../components";
+import { DetailedList, FilterMenu } from "../../components";
 
 export function Entries() {
   return (
@@ -13,6 +13,7 @@ export function Entries() {
             You can filter by month or sort by values
           </p>
           <FilterMenu />
+          <DetailedList type="entry" />
         </div>
       </div>
     </>
