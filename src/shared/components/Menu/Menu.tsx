@@ -10,9 +10,15 @@ import { AiOutlineHome, AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
 import { getTime } from "../../utils/getTime";
 
+import { useAuthState } from "react-firebase-hooks/auth";
+
+import { auth } from "../../firebase";
+
 export function Menu() {
   const [opened, setOpened] = useState(false);
   const [actualTime, setActualTime] = useState("");
+
+  const [user] = useAuthState(auth);
 
   const navigate = useNavigate();
 
@@ -24,6 +30,8 @@ export function Menu() {
   useEffect(() => {
     setActualTime(() => getTime());
   }, []);
+
+  if (!user) return null;
 
   return (
     <>
