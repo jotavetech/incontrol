@@ -7,6 +7,7 @@ export { MenuItem } from "./MenuItem/MenuItem";
 export { HeadMenu } from "./HeadMenu/HeadMenu";
 export { EditForm } from "./EditForm/EditForm";
 export { FilterMenu } from "./FilterMenu/FilterMenu";
+export { AddItemForm } from "./AddItemForm/AddItemForm";
 export { ResumeItems } from "./ResumeItems/ResumeItems";
 export { MenuListItem } from "./MenuListItem/MenuListItem";
 export { DetailedList } from "./DetailedList/DetailedList";

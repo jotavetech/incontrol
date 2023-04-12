@@ -1,5 +1,8 @@
+import { useState } from "react";
+
 import { itemsData } from "../../../mocks";
 import {
+  AddItemForm,
   HeadMenu,
   MenuList,
   MenuListItem,
@@ -7,8 +10,11 @@ import {
 } from "../../components";
 
 export function Home() {
+  const [addMenuOpen, setAddMenuOpen] = useState(false);
+
   return (
     <>
+      <AddItemForm onClose={() => setAddMenuOpen(false)} open={addMenuOpen} />
       <div className="pt-16 md:pt-24 overflow-hidden">
         <div className="p-4 lg:pl-64 flex flex-col">
           <div className="flex flex-col md:flex-row gap-5 md:gap-10 animeRight">
@@ -32,7 +38,10 @@ export function Home() {
                   Add your expenses and income to keep an eye on your financial
                   life
                 </p>
-                <button className="w-12 mt-3 h-12 rounded-full bg-secondary-color text-3xl hover:scale-105 transition-transform">
+                <button
+                  onClick={() => setAddMenuOpen(true)}
+                  className="w-12 mt-3 h-12 rounded-full bg-secondary-color text-3xl hover:scale-105 transition-transform"
+                >
                   +
                 </button>
               </div>
