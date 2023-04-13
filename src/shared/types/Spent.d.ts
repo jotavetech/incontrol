@@ -1,4 +1,5 @@
 type Spent = {
+  id: string;
   ownerId: string;
   title: string;
   description: string;

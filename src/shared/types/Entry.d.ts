@@ -1,4 +1,5 @@
 type Entry = {
+  id: string;
   ownerId: string;
   title: string;
   description: string;
