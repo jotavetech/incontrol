@@ -13,6 +13,7 @@ import {
 import { Footer, Header, Menu } from "./shared/components";
 
 import { ProtectedRoute, UnloggedRoute } from "./ProtectedRoute";
+import { ItemsProvider } from "./shared/context/itemsContext";
 
 function Layout() {
   return (
@@ -89,7 +90,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div className="App bg-main-bg text-white w-full min-h-screen">
-      <RouterProvider router={router} />
+      <ItemsProvider>
+        <RouterProvider router={router} />
+      </ItemsProvider>
     </div>
   );
 }
