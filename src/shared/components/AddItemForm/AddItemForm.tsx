@@ -12,7 +12,7 @@ export function AddItemForm({ open, onClose }: AddItemFormType) {
   return (
     <div className="fixed w-screen h-screen top-0 left-0 z-20">
       <div className="pt-16 lg:pt-32 z-30 h-screen mx-auto p-5 lg:pl-64">
-        <div className="w-full md:w-[450px] bg-list-bg mx-auto mt-10 md:mt-24 rounded-xl shadow-lg animeTop">
+        <div className="w-full md:w-[450px] bg-list-bg mx-auto mt-10 md:mt-16 rounded-xl shadow-lg animeTop">
           <form className="p-7 flex flex-col gap-3">
             <h1 className="text-center text-xl md:text-2xl">
               Add <span className="text-secondary-color">new</span> item

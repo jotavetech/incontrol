@@ -35,7 +35,7 @@ export function DetailedList({ type }: DetailedListType) {
             </li>
           ))}
         </ul>
-        <p className="mt-1 md:mt-3 md:text-lg pb-3">
+        <p className="mt-1 md:mt-3 md:text-lg pb-5 md:pb-7">
           Total: <span className="text-secondary-color">$10000.00</span>
         </p>
       </div>
