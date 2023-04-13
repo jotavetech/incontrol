@@ -55,6 +55,13 @@ export function EditForm({ open, onClose }: EditFormType) {
               >
                 Cancel
               </button>
+              <button
+                onClick={() => console.log("delete")}
+                type="button"
+                className="bg-red-500 px-4 py-2 w-32 text-sm mt-2 md:px-6 md:py-2 md:mt-5 md:text-base rounded-md hover:brightness-125"
+              >
+                Delete
+              </button>
             </div>
           </form>
         </div>
