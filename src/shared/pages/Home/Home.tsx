@@ -57,7 +57,7 @@ export function Home() {
                   <span className="text-center pt-20 text-2xl text-gray-600 block">
                     Loading....
                   </span>
-                ) : entries ? (
+                ) : entries && entries.length > 0 ? (
                   entries.map((item) => (
                     <MenuListItem
                       key={item.id}
@@ -81,7 +81,7 @@ export function Home() {
                   <span className="text-center pt-20 text-2xl text-gray-600 block">
                     Loading....
                   </span>
-                ) : spents ? (
+                ) : spents && spents.length > 0 ? (
                   spents.map((item) => (
                     <MenuListItem
                       key={item.id}
