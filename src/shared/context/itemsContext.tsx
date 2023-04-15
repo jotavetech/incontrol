@@ -30,6 +30,8 @@ export const ItemsProvider = ({ children }: { children: ReactNode }) => {
           value,
           createdAt: new Date(),
         });
+
+        getSpents();
       } catch (err) {
         console.log(err);
       }
@@ -46,6 +48,8 @@ export const ItemsProvider = ({ children }: { children: ReactNode }) => {
           value,
           createdAt: new Date(),
         });
+
+        getEntries();
       } catch (err) {
         console.log(err);
       }
