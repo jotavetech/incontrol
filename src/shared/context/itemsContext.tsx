@@ -2,16 +2,17 @@ import { ItemsContextType, NewItemType } from "./itemsContext.types";
 
 import { useAuthState } from "react-firebase-hooks/auth";
 
-import { ReactNode, createContext, useState } from "react";
+import { ReactNode, createContext, useState, useEffect } from "react";
 
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+
 import { auth, db } from "../firebase";
 
 export const ItemsContext = createContext({} as ItemsContextType);
 
 export const ItemsProvider = ({ children }: { children: ReactNode }) => {
   const [entries, setEntries] = useState<Entry[] | null>(null);
-  const [spents, setSpents] = useState<Entry[] | null>(null);
+  const [spents, setSpents] = useState<Spent[] | null>(null);
 
   const [user] = useAuthState(auth);
 
@@ -49,6 +50,49 @@ export const ItemsProvider = ({ children }: { children: ReactNode }) => {
       }
     }
   };
+
+  const getSpents = async () => {
+    if (user) {
+      const spentsCollection = query(
+        collection(db, "spents"),
+        where("ownerId", "==", user.uid)
+      );
+
+      const spentsDoc = await getDocs(spentsCollection);
+
+      setSpents(
+        () =>
+          spentsDoc.docs.map((spent) => ({
+            ...spent.data(),
+            id: spent.id,
+          })) as Spent[]
+      );
+    }
+  };
+
+  const getEntries = async () => {
+    if (user) {
+      const entriesCollection = query(
+        collection(db, "entries"),
+        where("ownerId", "==", user.uid)
+      );
+
+      const entriesDoc = await getDocs(entriesCollection);
+
+      setEntries(
+        () =>
+          entriesDoc.docs.map((entry) => ({
+            ...entry.data(),
+            id: entry.id,
+          })) as Entry[]
+      );
+    }
+  };
+
+  useEffect(() => {
+    getSpents();
+    getEntries();
+  }, [user]);
 
   return (
     <ItemsContext.Provider
