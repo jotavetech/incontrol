@@ -1,7 +1,9 @@
 export type MenuListItemType = {
   id: string;
   title: string;
-  date: string;
+  date: {
+    seconds: number;
+  };
   value: number;
   type: "spent" | "entry";
 };

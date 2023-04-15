@@ -3,6 +3,8 @@ type Entry = {
   ownerId: string;
   title: string;
   description: string;
-  createdAt: Date;
+  createdAt: {
+    seconds: number;
+  };
   value: number;
 };

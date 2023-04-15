@@ -7,13 +7,15 @@ export function MenuListItem({
   value,
   type,
 }: MenuListItemType) {
+  const createdAt = new Date(date.seconds);
+
   return (
     <div
       key={id}
       className="flex w-full justify-between bg-item-bg py-2 px-4 rounded-lg"
     >
       <p>{title}</p>
-      <span>{date}</span>
+      <span>{createdAt.toDateString()}</span>
       <span
         className={`${
           type === "spent" ? "text-red-400" : "text-secondary-color-2"

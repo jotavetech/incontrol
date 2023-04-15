@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 
-import { itemsData } from "../../../mocks";
 import {
   AddItemForm,
   HeadMenu,
@@ -9,8 +8,12 @@ import {
   ResumeItems,
 } from "../../components";
 
+import { ItemsContext } from "../../context/itemsContext";
+
 export function Home() {
   const [addMenuOpen, setAddMenuOpen] = useState(false);
+
+  const { entries, spents } = useContext(ItemsContext);
 
   return (
     <>
@@ -50,11 +53,11 @@ export function Home() {
           <div className="flex flex-col md:flex-row gap-16 md:gap-10 mt-16 pb-10 animeLeft">
             <MenuList type="entries">
               <div className="flex flex-col gap-3 overflow-y-auto h-full">
-                {itemsData ? (
-                  itemsData.map((item) => (
+                {entries ? (
+                  entries.map((item) => (
                     <MenuListItem
                       key={item.id}
-                      date={item.date}
+                      date={item.createdAt}
                       id={item.id}
                       title={item.title}
                       value={item.value}
@@ -70,11 +73,11 @@ export function Home() {
             </MenuList>
             <MenuList type="spents">
               <div className="flex flex-col gap-3 overflow-y-auto h-full">
-                {itemsData ? (
-                  itemsData.map((item) => (
+                {spents ? (
+                  spents.map((item) => (
                     <MenuListItem
                       key={item.id}
-                      date={item.date}
+                      date={item.createdAt}
                       id={item.id}
                       title={item.title}
                       value={item.value}
