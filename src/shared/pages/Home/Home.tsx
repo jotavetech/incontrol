@@ -13,7 +13,7 @@ import { ItemsContext } from "../../context/itemsContext";
 export function Home() {
   const [addMenuOpen, setAddMenuOpen] = useState(false);
 
-  const { entries, spents } = useContext(ItemsContext);
+  const { entries, spents, loading } = useContext(ItemsContext);
 
   return (
     <>
@@ -53,7 +53,11 @@ export function Home() {
           <div className="flex flex-col md:flex-row gap-16 md:gap-10 mt-16 pb-10 animeLeft">
             <MenuList type="entries">
               <div className="flex flex-col gap-3 overflow-y-auto h-full">
-                {entries ? (
+                {loading ? (
+                  <span className="text-center pt-20 text-2xl text-gray-600 block">
+                    Loading....
+                  </span>
+                ) : entries ? (
                   entries.map((item) => (
                     <MenuListItem
                       key={item.id}
@@ -73,7 +77,11 @@ export function Home() {
             </MenuList>
             <MenuList type="spents">
               <div className="flex flex-col gap-3 overflow-y-auto h-full">
-                {spents ? (
+                {loading ? (
+                  <span className="text-center pt-20 text-2xl text-gray-600 block">
+                    Loading....
+                  </span>
+                ) : spents ? (
                   spents.map((item) => (
                     <MenuListItem
                       key={item.id}

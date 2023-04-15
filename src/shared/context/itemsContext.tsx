@@ -13,6 +13,7 @@ export const ItemsContext = createContext({} as ItemsContextType);
 export const ItemsProvider = ({ children }: { children: ReactNode }) => {
   const [entries, setEntries] = useState<Entry[] | null>(null);
   const [spents, setSpents] = useState<Spent[] | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const [user] = useAuthState(auth);
 
@@ -52,40 +53,54 @@ export const ItemsProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const getSpents = async () => {
-    if (user) {
-      const spentsCollection = query(
-        collection(db, "spents"),
-        where("ownerId", "==", user.uid)
-      );
+    try {
+      if (user) {
+        setLoading(true);
+        const spentsCollection = query(
+          collection(db, "spents"),
+          where("ownerId", "==", user.uid)
+        );
 
-      const spentsDoc = await getDocs(spentsCollection);
+        const spentsDoc = await getDocs(spentsCollection);
 
-      setSpents(
-        () =>
-          spentsDoc.docs.map((spent) => ({
-            ...spent.data(),
-            id: spent.id,
-          })) as Spent[]
-      );
+        setSpents(
+          () =>
+            spentsDoc.docs.map((spent) => ({
+              ...spent.data(),
+              id: spent.id,
+            })) as Spent[]
+        );
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
     }
   };
 
   const getEntries = async () => {
-    if (user) {
-      const entriesCollection = query(
-        collection(db, "entries"),
-        where("ownerId", "==", user.uid)
-      );
+    try {
+      if (user) {
+        setLoading(true);
+        const entriesCollection = query(
+          collection(db, "entries"),
+          where("ownerId", "==", user.uid)
+        );
 
-      const entriesDoc = await getDocs(entriesCollection);
+        const entriesDoc = await getDocs(entriesCollection);
 
-      setEntries(
-        () =>
-          entriesDoc.docs.map((entry) => ({
-            ...entry.data(),
-            id: entry.id,
-          })) as Entry[]
-      );
+        setEntries(
+          () =>
+            entriesDoc.docs.map((entry) => ({
+              ...entry.data(),
+              id: entry.id,
+            })) as Entry[]
+        );
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -100,7 +115,7 @@ export const ItemsProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <ItemsContext.Provider
-      value={{ entries, spents, createNewEntry, createNewSpent }}
+      value={{ entries, spents, loading, createNewEntry, createNewSpent }}
     >
       {children}
     </ItemsContext.Provider>
