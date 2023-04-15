@@ -22,8 +22,13 @@ export function AddItemForm({ open, onClose }: AddItemFormType) {
 
     if (title && description && value) {
       setError("");
-      if (type === "entry") createNewEntry({ title, description, value });
-      else createNewSpent({ title, description, value });
+      if (type === "entry") {
+        createNewEntry({ title, description, value });
+        onClose();
+      } else {
+        createNewSpent({ title, description, value });
+        onClose();
+      }
     } else setError("All fields are required");
   };
 
@@ -67,9 +72,7 @@ export function AddItemForm({ open, onClose }: AddItemFormType) {
               <option value="entry" selected>
                 Entry
               </option>
-              <option value="spent" selected>
-                Spent
-              </option>
+              <option value="spent">Spent</option>
             </select>
             {error && <p className="text-sm text-red-400">{error}</p>}
             <div className="flex gap-2">
