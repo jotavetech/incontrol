@@ -9,7 +9,9 @@ export function FilterMenu() {
       >
         <option value="all">All</option>
         {months.map((month) => (
-          <option value={month.toLowerCase()}>{month}</option>
+          <option value={month.toLowerCase()} key={month}>
+            {month}
+          </option>
         ))}
       </select>
       <select
