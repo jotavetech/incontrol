@@ -30,11 +30,14 @@ export function DetailedList({ type }: DetailedListType) {
         open={menuOpen}
         onClose={() => setMenuOpen(false)}
         itemInfo={itemInfo}
+        type={type === "entry" ? "entries" : "spents"}
       />
       <div className="animeRight">
         <ul className="lg:min-w-[700px] mt-5 md:mt-10 bg-list-bg p-2 rounded-xl overflow-y-scroll h-[350px] lg:h-[400px] flex flex-col gap-3">
           {loading ? (
-            <span>Loading..</span>
+            <span className="text-center pt-20 text-2xl text-gray-600 block">
+              Loading...
+            </span>
           ) : entries && type === "entry" ? (
             entries.map((item) => (
               <DetailedListItem

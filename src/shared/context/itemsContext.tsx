@@ -4,7 +4,16 @@ import { useAuthState } from "react-firebase-hooks/auth";
 
 import { ReactNode, createContext, useState, useEffect } from "react";
 
-import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  query,
+  updateDoc,
+  where,
+} from "firebase/firestore";
 
 import { auth, db } from "../firebase";
 
@@ -52,6 +61,58 @@ export const ItemsProvider = ({ children }: { children: ReactNode }) => {
         getEntries();
       } catch (err) {
         console.log(err);
+      }
+    }
+  };
+
+  const deleteItem = async ({
+    itemId,
+    type,
+  }: {
+    itemId: string;
+    type: "spents" | "entries";
+  }) => {
+    if (user) {
+      setLoading(true);
+      try {
+        const docRef = doc(db, type, itemId);
+        await deleteDoc(docRef);
+        type === "entries" ? getEntries() : getSpents();
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+  };
+
+  const updateItem = async ({
+    itemId,
+    newData,
+    type,
+  }: {
+    itemId: string;
+    newData: {
+      title: string;
+      description: string;
+      value: number;
+    };
+    type: "entries" | "spents";
+  }) => {
+    if (user) {
+      setLoading(true);
+      try {
+        const docRef = doc(db, type, itemId);
+
+        await updateDoc(docRef, {
+          ...newData,
+        });
+
+        type === "entries" ? getEntries() : getSpents();
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
       }
     }
   };
@@ -127,7 +188,15 @@ export const ItemsProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <ItemsContext.Provider
-      value={{ entries, spents, loading, createNewEntry, createNewSpent }}
+      value={{
+        entries,
+        spents,
+        loading,
+        createNewEntry,
+        createNewSpent,
+        updateItem,
+        deleteItem,
+      }}
     >
       {children}
     </ItemsContext.Provider>

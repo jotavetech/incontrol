@@ -1,13 +1,16 @@
 import { Input } from "../";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 import { EditFormType } from "./EditForm.types";
+import { ItemsContext } from "../../context/itemsContext";
 
-export function EditForm({ open, onClose, itemInfo }: EditFormType) {
+export function EditForm({ open, onClose, itemInfo, type }: EditFormType) {
   const [title, setTitle] = useState(() => itemInfo.title);
   const [description, setDescription] = useState(() => itemInfo.description);
   const [value, setValue] = useState(() => itemInfo.value);
+
+  const { updateItem, deleteItem } = useContext(ItemsContext);
 
   useEffect(() => {
     setTitle(() => itemInfo.title);
@@ -17,11 +20,33 @@ export function EditForm({ open, onClose, itemInfo }: EditFormType) {
 
   if (!open) return null;
 
+  const handleUpdate = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (title && description && value) {
+      updateItem({
+        itemId: itemInfo.id,
+        newData: {
+          title,
+          description,
+          value,
+        },
+        type,
+      });
+      onClose();
+    }
+  };
+
+  const handleDelete = () => {
+    deleteItem({ itemId: itemInfo.id, type });
+    onClose();
+  };
+
   return (
     <div className="fixed w-screen h-screen top-0 left-0 z-20">
       <div className="pt-16 lg:pt-32 z-30 h-screen mx-auto p-5 lg:pl-64">
         <div className="w-full md:w-[450px] bg-list-bg mx-auto mt-20 rounded-xl shadow-lg animeTop">
-          <form className="p-7 flex flex-col gap-3">
+          <form onSubmit={handleUpdate} className="p-7 flex flex-col gap-3">
             <Input
               id="title"
               onChange={({ target }) => setTitle(target.value)}
@@ -62,7 +87,7 @@ export function EditForm({ open, onClose, itemInfo }: EditFormType) {
                 Cancel
               </button>
               <button
-                onClick={() => console.log("delete")}
+                onClick={() => handleDelete()}
                 type="button"
                 className="bg-red-500 px-4 py-2 w-32 text-sm mt-2 md:px-6 md:py-2 md:mt-5 md:text-base rounded-md hover:brightness-125"
               >

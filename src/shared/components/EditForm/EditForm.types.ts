@@ -7,4 +7,5 @@ export type EditFormType = {
     id: string;
     value: number;
   };
+  type: "entries" | "spents";
 };
