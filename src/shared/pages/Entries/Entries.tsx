@@ -1,4 +1,4 @@
-import { DetailedList, FilterMenu } from "../../components";
+import { Dashboard } from "../../components";
 
 export function Entries() {
   return (
@@ -12,8 +12,7 @@ export function Entries() {
           <p className="text-lg md:text-xl mt-1 text-gray-300">
             You can filter by month or sort by values
           </p>
-          <FilterMenu />
-          <DetailedList type="entry" />
+          <Dashboard type="entry" />
         </div>
       </div>
     </>

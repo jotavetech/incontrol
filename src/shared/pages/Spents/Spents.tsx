@@ -1,4 +1,4 @@
-import { DetailedList, FilterMenu } from "../../components";
+import { Dashboard } from "../../components";
 
 export function Spents() {
   return (
@@ -12,8 +12,7 @@ export function Spents() {
           <p className="text-lg md:text-xl mt-1 text-gray-300">
             You can filter by month or sort by values
           </p>
-          <FilterMenu />
-          <DetailedList type="spent" />
+          <Dashboard type="spent" />
         </div>
       </div>
     </>

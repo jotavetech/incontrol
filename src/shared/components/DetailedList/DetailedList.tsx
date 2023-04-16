@@ -6,7 +6,7 @@ import { useState, useContext, useEffect } from "react";
 
 import { ItemsContext } from "../../context/itemsContext";
 
-export function DetailedList({ type }: DetailedListType) {
+export function DetailedList({ type, sortType }: DetailedListType) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const [itemInfo, setItemInfo] = useState({
