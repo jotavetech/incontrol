@@ -11,3 +11,4 @@ export { AddItemForm } from "./AddItemForm/AddItemForm";
 export { ResumeItems } from "./ResumeItems/ResumeItems";
 export { MenuListItem } from "./MenuListItem/MenuListItem";
 export { DetailedList } from "./DetailedList/DetailedList";
+export { DetailedListItem } from "./DetailedListItem/DetailedListItem";

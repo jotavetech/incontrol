@@ -1,39 +1,44 @@
-import { itemsData } from "../../../mocks";
-
-import { EditForm } from "../";
+import { DetailedListItem, EditForm } from "../";
 
 import { DetailedListType } from "./DetailedList.types";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
 
-const itemsData2 = [...itemsData, ...itemsData];
+import { ItemsContext } from "../../context/itemsContext";
 
 export function DetailedList({ type }: DetailedListType) {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const { entries, spents, loading } = useContext(ItemsContext);
 
   return (
     <>
       <EditForm open={menuOpen} onClose={() => setMenuOpen(false)} />
       <div className="animeRight">
         <ul className="lg:min-w-[700px] mt-5 md:mt-10 bg-list-bg p-2 rounded-xl overflow-y-scroll h-[350px] lg:h-[400px] flex flex-col gap-3">
-          {itemsData2.map((item) => (
-            <li
-              onClick={() => setMenuOpen(true)}
-              key={item.id}
-              className="flex justify-around gap-2 bg-item-bg p-4 md:p-2 rounded-xl items-center hover:brightness-125 hover:cursor-pointer"
-            >
-              <p className="text-sm lg:text-base">{item.title}</p>
-              <p className="text-sm lg:text-base">desc lorem ipsum....</p>
-              <span className="text-sm lg:text-base">{item.date}</span>
-              <span
-                className={`text-sm lg:text-base ${
-                  type === "entry" ? "text-secondary-color" : "text-red-400"
-                }`}
-              >
-                ${item.value.toFixed(2)}
-              </span>
-            </li>
-          ))}
+          {loading ? (
+            <span>Loading..</span>
+          ) : entries && type === "entry" ? (
+            entries.map((item) => (
+              <DetailedListItem
+                type="entry"
+                item={item}
+                key={item.id}
+                onClick={() => setMenuOpen(true)}
+              />
+            ))
+          ) : spents && type === "spent" ? (
+            spents.map((item) => (
+              <DetailedListItem
+                type="entry"
+                item={item}
+                key={item.id}
+                onClick={() => setMenuOpen(true)}
+              />
+            ))
+          ) : (
+            <span>Nothing found</span>
+          )}
         </ul>
         <p className="mt-1 md:mt-3 md:text-lg pb-5 md:pb-7">
           Total: <span className="text-secondary-color">$10000.00</span>
