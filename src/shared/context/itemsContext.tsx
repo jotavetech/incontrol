@@ -67,13 +67,17 @@ export const ItemsProvider = ({ children }: { children: ReactNode }) => {
 
         const spentsDoc = await getDocs(spentsCollection);
 
-        setSpents(
-          () =>
-            spentsDoc.docs.map((spent) => ({
-              ...spent.data(),
-              id: spent.id,
-            })) as Spent[]
-        );
+        setSpents((prevSpents) => {
+          const spents = spentsDoc.docs.map((spent) => ({
+            ...spent.data(),
+            createdAt: spent.data().createdAt.toDate(),
+            id: spent.id,
+          })) as Spent[];
+
+          spents.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+
+          return spents;
+        });
       }
     } catch (err) {
       console.log(err);
@@ -93,13 +97,17 @@ export const ItemsProvider = ({ children }: { children: ReactNode }) => {
 
         const entriesDoc = await getDocs(entriesCollection);
 
-        setEntries(
-          () =>
-            entriesDoc.docs.map((entry) => ({
-              ...entry.data(),
-              id: entry.id,
-            })) as Entry[]
-        );
+        setEntries((prevEntries) => {
+          const entries = entriesDoc.docs.map((entry) => ({
+            ...entry.data(),
+            createdAt: entry.data().createdAt.toDate(),
+            id: entry.id,
+          })) as Entry[];
+
+          entries.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+
+          return entries;
+        });
       }
     } catch (err) {
       console.log(err);

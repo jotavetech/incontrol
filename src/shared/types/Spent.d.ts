@@ -3,8 +3,6 @@ type Spent = {
   ownerId: string;
   title: string;
   description: string;
-  createdAt: {
-    seconds: number;
-  };
+  createdAt: Date;
   value: number;
 };
