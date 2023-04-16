@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 
 import {
   AddItemForm,
@@ -10,10 +10,45 @@ import {
 
 import { ItemsContext } from "../../context/itemsContext";
 
+// function Summary({ entries, spents }: any) {
+//   const [entriesTotal, setEntriesTotal] = useState(() =>
+//     entries.reduce((acc, entry) => acc + entry.value, 0)
+//   );
+//   const [spentsTotal, setSpentsTotal] = useState(() =>
+//     spents.reduce((acc, spent) => acc + spent.value, 0)
+//   );
+
+//   useEffect(() => {
+//     setEntriesTotal(entries.reduce((acc, entry) => acc + entry.value, 0));
+//     setSpentsTotal(spents.reduce((acc, spent) => acc + spent.value, 0));
+//   }, [entries, spents]);
+
+//   return (
+//     <ResumeItems entries={entriesTotal} spents={spentsTotal} piggyBank={0} />
+//   );
+// }
+
 export function Home() {
   const [addMenuOpen, setAddMenuOpen] = useState(false);
 
   const { entries, spents, loading } = useContext(ItemsContext);
+
+  const [entriesTotal, setEntriesTotal] = useState(() => {
+    if (entries) return entries.reduce((acc, entry) => acc + entry.value, 0);
+    return 0;
+  });
+  const [spentsTotal, setSpentsTotal] = useState(() => {
+    if (spents) return spents.reduce((acc, spent) => acc + spent.value, 0);
+    return 0;
+  });
+
+  useEffect(() => {
+    if (entries)
+      setEntriesTotal(entries.reduce((acc, entry) => acc + entry.value, 0));
+
+    if (spents)
+      setSpentsTotal(spents.reduce((acc, spent) => acc + spent.value, 0));
+  }, [entries, spents]);
 
   return (
     <>
@@ -29,7 +64,11 @@ export function Home() {
               <p className="text-gray-100 text-sm md:text-base">
                 Here is a summary of your finances
               </p>
-              <ResumeItems entries={0} spents={0} piggyBank={0} remaining={0} />
+              <ResumeItems
+                entries={entriesTotal}
+                spents={spentsTotal}
+                piggyBank={0}
+              />
             </HeadMenu>
             <HeadMenu>
               <div className="flex flex-col items-center">

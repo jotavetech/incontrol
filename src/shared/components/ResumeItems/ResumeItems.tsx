@@ -1,11 +1,20 @@
 import { ResumeItemsType } from "./ResumeItems.types";
 
-export function ResumeItems({
-  piggyBank,
-  entries,
-  spents,
-  remaining,
-}: ResumeItemsType) {
+import { useState, useEffect } from "react";
+
+export function ResumeItems({ piggyBank, entries, spents }: ResumeItemsType) {
+  const [remaining, setRemaining] = useState(0);
+
+  useEffect(() => {
+    setRemaining(() => {
+      if (entries && spents) {
+        const totalRemaining = entries - spents;
+        return totalRemaining;
+      }
+      return 0;
+    });
+  }, [entries, spents]);
+
   return (
     <ul className="text-sm mt-5 md:mt-2 md:text-base">
       <li>
