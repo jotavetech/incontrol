@@ -10,24 +10,6 @@ import {
 
 import { ItemsContext } from "../../context/itemsContext";
 
-// function Summary({ entries, spents }: any) {
-//   const [entriesTotal, setEntriesTotal] = useState(() =>
-//     entries.reduce((acc, entry) => acc + entry.value, 0)
-//   );
-//   const [spentsTotal, setSpentsTotal] = useState(() =>
-//     spents.reduce((acc, spent) => acc + spent.value, 0)
-//   );
-
-//   useEffect(() => {
-//     setEntriesTotal(entries.reduce((acc, entry) => acc + entry.value, 0));
-//     setSpentsTotal(spents.reduce((acc, spent) => acc + spent.value, 0));
-//   }, [entries, spents]);
-
-//   return (
-//     <ResumeItems entries={entriesTotal} spents={spentsTotal} piggyBank={0} />
-//   );
-// }
-
 export function Home() {
   const [addMenuOpen, setAddMenuOpen] = useState(false);
 
