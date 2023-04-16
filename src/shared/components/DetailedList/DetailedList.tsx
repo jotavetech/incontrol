@@ -2,7 +2,7 @@ import { DetailedListItem, EditForm } from "../";
 
 import { DetailedListType } from "./DetailedList.types";
 
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 
 import { ItemsContext } from "../../context/itemsContext";
 
@@ -24,6 +24,27 @@ export function DetailedList({ type }: DetailedListType) {
 
   const { entries, spents, loading } = useContext(ItemsContext);
 
+  const [total, setTotal] = useState({
+    entriesTotal: 0,
+    spentsTotal: 0,
+  });
+
+  useEffect(() => {
+    if (entries && entries.length > 0) {
+      const entriesTotal = entries.reduce((acc, entry) => acc + entry.value, 0);
+      setTotal((prev) => ({ ...prev, entriesTotal }));
+    } else {
+      setTotal((prev) => ({ ...prev, entriesTotal: 0 }));
+    }
+
+    if (spents && spents.length > 0) {
+      const spentsTotal = spents.reduce((acc, entry) => acc + entry.value, 0);
+      setTotal((prev) => ({ ...prev, spentsTotal }));
+    } else {
+      setTotal((prev) => ({ ...prev, spentsTotal: 0 }));
+    }
+  }, [entries, spents]);
+
   return (
     <>
       <EditForm
@@ -38,7 +59,7 @@ export function DetailedList({ type }: DetailedListType) {
             <span className="text-center pt-20 text-2xl text-gray-600 block">
               Loading...
             </span>
-          ) : entries && type === "entry" ? (
+          ) : entries && entries.length > 0 && type === "entry" ? (
             entries.map((item) => (
               <DetailedListItem
                 type="entry"
@@ -47,7 +68,7 @@ export function DetailedList({ type }: DetailedListType) {
                 onClick={() => handleMenu({ item })}
               />
             ))
-          ) : spents && type === "spent" ? (
+          ) : spents && spents.length > 0 && type === "spent" ? (
             spents.map((item) => (
               <DetailedListItem
                 type="entry"
@@ -57,11 +78,21 @@ export function DetailedList({ type }: DetailedListType) {
               />
             ))
           ) : (
-            <span>Nothing found</span>
+            <span className="text-center pt-20 text-2xl text-gray-600 block">
+              Nothing found
+            </span>
           )}
         </ul>
         <p className="mt-1 md:mt-3 md:text-lg pb-5 md:pb-7">
-          Total: <span className="text-secondary-color">$10000.00</span>
+          Total:{" "}
+          <span className="text-secondary-color">
+            $
+            {type === "entry"
+              ? total.entriesTotal
+              : total.spentsTotal
+              ? total.spentsTotal
+              : 0}
+          </span>
         </p>
       </div>
     </>
