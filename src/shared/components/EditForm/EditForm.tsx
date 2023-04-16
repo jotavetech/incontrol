@@ -1,13 +1,19 @@
 import { Input } from "../";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { EditFormType } from "./EditForm.types";
 
-export function EditForm({ open, onClose }: EditFormType) {
-  const [title, setTitle] = useState("Title");
-  const [description, setDescription] = useState("Description");
-  const [value, setValue] = useState(0);
+export function EditForm({ open, onClose, itemInfo }: EditFormType) {
+  const [title, setTitle] = useState(() => itemInfo.title);
+  const [description, setDescription] = useState(() => itemInfo.description);
+  const [value, setValue] = useState(() => itemInfo.value);
+
+  useEffect(() => {
+    setTitle(() => itemInfo.title);
+    setDescription(() => itemInfo.description);
+    setValue(() => itemInfo.value);
+  }, [itemInfo]);
 
   if (!open) return null;
 
@@ -20,7 +26,7 @@ export function EditForm({ open, onClose }: EditFormType) {
               id="title"
               onChange={({ target }) => setTitle(target.value)}
               value={title}
-              placeholder={title}
+              placeholder="Your title"
               label="Item title"
               type="text"
             />
@@ -28,7 +34,7 @@ export function EditForm({ open, onClose }: EditFormType) {
               id="description"
               onChange={({ target }) => setDescription(target.value)}
               value={description}
-              placeholder={description}
+              placeholder="Your description"
               label="Item description"
               type="text"
             />
@@ -36,7 +42,7 @@ export function EditForm({ open, onClose }: EditFormType) {
               id="value"
               onChange={({ target }) => setValue(+target.value)}
               value={value}
-              placeholder={String(value)}
+              placeholder="Item value"
               label="Item value"
               type="number"
             />
