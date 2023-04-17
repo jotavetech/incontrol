@@ -16,7 +16,7 @@ export function DetailedList({ type, sortType }: DetailedListType) {
     value: 0,
   });
 
-  const handleMenu = ({ item }: { item: Spent | Entry }) => {
+  const handleMenu = ({ item }: { item: Item }) => {
     setItemInfo({ id: "", title: "", description: "", value: 0 });
     setMenuOpen(true);
     setItemInfo({ ...item });
@@ -45,14 +45,14 @@ export function DetailedList({ type, sortType }: DetailedListType) {
     }
   }, [entries, spents]);
 
-  const [sortedEntries, setSortedEntries] = useState<Spent[] | null>(null);
-  const [sortedSpents, setSortedSpents] = useState<Spent[] | null>(null);
+  const [sortedEntries, setSortedEntries] = useState<Item[] | null>(null);
+  const [sortedSpents, setSortedSpents] = useState<Item[] | null>(null);
 
-  function sortAscending(a: Spent, b: Spent) {
+  function sortAscending(a: Item, b: Item) {
     return a.value - b.value;
   }
 
-  function sortDescending(a: Spent, b: Spent) {
+  function sortDescending(a: Item, b: Item) {
     return b.value - a.value;
   }
 

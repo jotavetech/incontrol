@@ -20,8 +20,8 @@ import { auth, db } from "../firebase";
 export const ItemsContext = createContext({} as ItemsContextType);
 
 export const ItemsProvider = ({ children }: { children: ReactNode }) => {
-  const [entries, setEntries] = useState<Entry[] | null>(null);
-  const [spents, setSpents] = useState<Spent[] | null>(null);
+  const [entries, setEntries] = useState<Item[] | null>(null);
+  const [spents, setSpents] = useState<Item[] | null>(null);
   const [loading, setLoading] = useState(false);
 
   const [user] = useAuthState(auth);
@@ -133,7 +133,7 @@ export const ItemsProvider = ({ children }: { children: ReactNode }) => {
             ...spent.data(),
             createdAt: spent.data().createdAt.toDate(),
             id: spent.id,
-          })) as Spent[];
+          })) as Item[];
 
           spents.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
 
@@ -163,7 +163,7 @@ export const ItemsProvider = ({ children }: { children: ReactNode }) => {
             ...entry.data(),
             createdAt: entry.data().createdAt.toDate(),
             id: entry.id,
-          })) as Entry[];
+          })) as Item[];
 
           entries.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
 

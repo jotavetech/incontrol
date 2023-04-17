@@ -1,4 +1,4 @@
-type Spent = {
+type Item = {
   id: string;
   ownerId: string;
   title: string;
