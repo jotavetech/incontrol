@@ -5,9 +5,10 @@ import { DetailedList } from "..";
 import { useState } from "react";
 
 export function Dashboard({ type }: { type: "entry" | "spent" }) {
-  const [sortType, setSortType] = useState<"ascending" | "descending" | "all">(
-    "all"
-  );
+  const [sortType, setSortType] = useState<
+    "ascending" | "descending" | "noOrder"
+  >("noOrder");
+
   return (
     <>
       <div className="mt-2 md:mt-5 flex gap-5">
@@ -24,12 +25,12 @@ export function Dashboard({ type }: { type: "entry" | "spent" }) {
         </select>
         <select
           className="bg-item-bg w-36 h-10 p-2 rounded-lg"
-          defaultValue="all"
+          defaultValue="noOrder"
           onChange={({ target }) =>
-            setSortType(target.value as "ascending" | "descending" | "all")
+            setSortType(target.value as "ascending" | "descending" | "noOrder")
           }
         >
-          <option value="all">Sort By</option>
+          <option value="noOrder">No order</option>
           <option value="ascending">Value (ascending)</option>
           <option value="descending">Value (descending)</option>
         </select>

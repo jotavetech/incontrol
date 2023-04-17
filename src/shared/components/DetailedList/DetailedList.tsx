@@ -45,6 +45,47 @@ export function DetailedList({ type, sortType }: DetailedListType) {
     }
   }, [entries, spents]);
 
+  const [sortedEntries, setSortedEntries] = useState<Spent[] | null>(null);
+  const [sortedSpents, setSortedSpents] = useState<Spent[] | null>(null);
+
+  function sortAscending(a: Spent, b: Spent) {
+    return a.value - b.value;
+  }
+
+  function sortDescending(a: Spent, b: Spent) {
+    return b.value - a.value;
+  }
+
+  useEffect(() => {
+    if (entries && type === "entry") {
+      const savedEntries = [...entries];
+
+      if (sortType === "ascending") {
+        setSortedEntries(() => savedEntries.sort(sortAscending));
+      }
+      if (sortType === "descending") {
+        setSortedEntries(() => savedEntries.sort(sortDescending));
+      }
+      if (sortType === "noOrder") {
+        setSortedEntries(null);
+      }
+    }
+
+    if (spents && type === "spent") {
+      const savedSpents = [...spents];
+
+      if (sortType === "ascending") {
+        setSortedSpents(() => savedSpents.sort(sortAscending));
+      }
+      if (sortType === "descending") {
+        setSortedSpents(() => savedSpents.sort(sortDescending));
+      }
+      if (sortType === "noOrder") {
+        setSortedSpents(null);
+      }
+    }
+  }, [sortType]);
+
   return (
     <>
       <EditForm
@@ -59,6 +100,15 @@ export function DetailedList({ type, sortType }: DetailedListType) {
             <span className="text-center pt-20 text-2xl text-gray-600 block">
               Loading...
             </span>
+          ) : sortedEntries && type === "entry" ? (
+            sortedEntries.map((item) => (
+              <DetailedListItem
+                type="entry"
+                item={item}
+                key={item.id}
+                onClick={() => handleMenu({ item })}
+              />
+            ))
           ) : entries && entries.length > 0 && type === "entry" ? (
             entries.map((item) => (
               <DetailedListItem
@@ -68,10 +118,19 @@ export function DetailedList({ type, sortType }: DetailedListType) {
                 onClick={() => handleMenu({ item })}
               />
             ))
+          ) : sortedSpents && type === "spent" ? (
+            sortedSpents.map((item) => (
+              <DetailedListItem
+                type="spent"
+                item={item}
+                key={item.id}
+                onClick={() => handleMenu({ item })}
+              />
+            ))
           ) : spents && spents.length > 0 && type === "spent" ? (
             spents.map((item) => (
               <DetailedListItem
-                type="entry"
+                type="spent"
                 item={item}
                 key={item.id}
                 onClick={() => handleMenu({ item })}
