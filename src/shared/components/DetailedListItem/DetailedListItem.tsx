@@ -10,15 +10,19 @@ export function DetailedListItem({
       <li
         onClick={onClick}
         key={item.id}
-        className="flex justify-around gap-2 bg-item-bg p-4 md:p-2 rounded-xl items-center hover:brightness-125 hover:cursor-pointer"
+        className="flex justify-around gap-3 bg-item-bg p-4 md:p-2 rounded-xl items-center hover:brightness-125 hover:cursor-pointer h-16 "
       >
-        <p className="text-sm lg:text-base">{item.title}</p>
-        <p className="text-sm lg:text-base">{item.description}</p>
-        <span className="text-sm lg:text-base">
+        <p className="text-sm lg:text-base text-ellipsis w-[25%]">
+          {item.title}
+        </p>
+        <p className="text-sm lg:text-base text-ellipsis w-[25%]">
+          {item.description}
+        </p>
+        <span className="text-sm lg:text-base text-ellipsis">
           {item.createdAt.toLocaleDateString("pt-BR")}
         </span>
         <span
-          className={`text-sm lg:text-base ${
+          className={`text-sm lg:text-base text-ellipsis w-[25%] ${
             type === "entry" ? "text-secondary-color" : "text-red-400"
           }`}
         >
