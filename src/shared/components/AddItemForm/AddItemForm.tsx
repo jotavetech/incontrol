@@ -66,12 +66,10 @@ export function AddItemForm({ open, onClose }: AddItemFormType) {
             />
             <select
               className="bg-item-bg w-36 h-10 p-2 rounded-lg"
-              value={type}
+              defaultValue="entry"
               onChange={({ target }) => setType(target.value as ItemType)}
             >
-              <option value="entry" selected>
-                Entry
-              </option>
+              <option value="entry">Entry</option>
               <option value="spent">Spent</option>
             </select>
             {error && <p className="text-sm text-red-400">{error}</p>}
