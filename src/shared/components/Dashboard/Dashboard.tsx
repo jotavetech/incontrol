@@ -1,4 +1,4 @@
-import { months } from "../../../mocks";
+// import { months } from "../../../mocks";
 
 import { DetailedList } from "..";
 
@@ -12,7 +12,7 @@ export function Dashboard({ type }: { type: "entry" | "spent" }) {
   return (
     <>
       <div className="mt-2 md:mt-5 flex gap-5">
-        <select
+        {/* <select
           className="bg-item-bg w-36 h-10 p-2 rounded-lg"
           defaultValue="all"
         >
@@ -22,7 +22,7 @@ export function Dashboard({ type }: { type: "entry" | "spent" }) {
               {month}
             </option>
           ))}
-        </select>
+        </select> */}
         <select
           className="bg-item-bg w-36 h-10 p-2 rounded-lg"
           defaultValue="noOrder"
