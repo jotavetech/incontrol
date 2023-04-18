@@ -8,6 +8,7 @@ import {
   Error,
   Entries,
   Spents,
+  PiggyBank,
 } from "./shared/pages";
 
 import { Footer, Header, Menu } from "./shared/components";
@@ -60,6 +61,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <Spents />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/piggybank",
+        element: (
+          <ProtectedRoute>
+            <PiggyBank />
           </ProtectedRoute>
         ),
       },
