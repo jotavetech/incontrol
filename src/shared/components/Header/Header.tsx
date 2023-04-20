@@ -23,7 +23,7 @@ export function Header() {
 
   return (
     <>
-      <header className="w-full bg-list-bg h-16 md:h-20 flex items-center fixed top-0 z-50 shadow-md">
+      <header className="w-full bg-list-bg h-16 md:h-20 flex items-center fixed top-0 z-50 shadow-md dark:bg-zinc-100">
         <nav className="flex items-center justify-between w-full md:w-[1200px] p-5 md:p-20 mx-auto">
           <Link to="/" className="text-xl md:text-3xl font-semibold">
             in<span className="text-secondary-color">Control</span>
@@ -33,13 +33,13 @@ export function Header() {
               <>
                 <Link
                   to="/login"
-                  className="bg-secondary-color text-sm md:text-base w-20 h-7 md:w-24 flex justify-center items-center rounded-2xl hover:bg-secondary-color-2 transition-colors"
+                  className="bg-secondary-color text-sm md:text-base w-20 h-7 md:w-24 flex justify-center items-center rounded-2xl hover:bg-secondary-color-2 transition-colors dark:text-white"
                 >
                   Login
                 </Link>
                 <Link
                   to="/register"
-                  className="bg-item-bg text-sm md:text-base w-20 h-7  md:w-24 flex justify-center items-center rounded-2xl hover:bg-gray-900 transition-colors"
+                  className="bg-item-bg text-sm md:text-base w-20 h-7  md:w-24 flex justify-center items-center rounded-2xl hover:bg-gray-900 transition-colors dark:text-white"
                 >
                   Register
                 </Link>
@@ -56,7 +56,7 @@ export function Header() {
                 </h2>
                 <button
                   onClick={handleExit}
-                  className="bg-secondary-color text-sm md:text-base w-20 h-7 md:w-24 flex justify-center items-center rounded-2xl hover:bg-secondary-color-2 transition-colors"
+                  className="bg-secondary-color text-sm md:text-base w-20 h-7 md:w-24 flex justify-center items-center rounded-2xl hover:bg-secondary-color-2 transition-colors dark:text-white"
                 >
                   Exit
                   <BiExit className="ml-2" />

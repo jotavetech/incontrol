@@ -10,7 +10,7 @@ export function MenuListItem({
   return (
     <div
       key={id}
-      className="flex w-full justify-between bg-item-bg py-2 px-4 rounded-lg"
+      className="flex w-full justify-between bg-item-bg py-2 px-4 rounded-lg dark:bg-zinc-100"
     >
       <p>{title}</p>
       <span>{date.toLocaleDateString("pt-BR")}</span>

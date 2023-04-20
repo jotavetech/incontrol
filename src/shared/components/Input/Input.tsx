@@ -25,7 +25,7 @@ export function Input({
         onChange={onChange}
         id={id}
         disabled={disabled}
-        className={`bg-transparent border rounded-md px-2 p-1 md:p-2 hover:border-secondary-color transition-colors disabled:hover:border-white disabled:opacity-70 ${
+        className={`bg-transparent border rounded-md px-2 p-1 md:p-2 hover:border-secondary-color transition-colors disabled:hover:border-white disabled:opacity-70 dark:border-1 dark:border-black ${
           error && " border-red-500"
         }`}
       />

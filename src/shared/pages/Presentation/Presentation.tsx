@@ -18,7 +18,7 @@ export function Presentation() {
           and cash inflows
         </p>
       </section>
-      <section className="bg-list-bg text-center mt-10 md:mt-32 flex flex-col items-center pb-10 pt-10 md:pb-24 md:pt-24 px-4">
+      <section className="bg-list-bg text-center mt-10 md:mt-32 flex flex-col items-center pb-10 pt-10 md:pb-24 md:pt-24 px-4 dark:bg-zinc-100">
         <h1 className="text-3xl md:text-5xl font-semibold ">
           Create an <span className="text-secondary-color">Account</span>
         </h1>
@@ -29,13 +29,13 @@ export function Presentation() {
         <div className="flex gap-2 md:gap-10 mt-5">
           <Link
             to="/register"
-            className="w-24 h-7 md:w-40 md:h-10 bg-secondary-color flex justify-center items-center rounded-2xl hover:scale-105 transition-transform"
+            className="w-24 h-7 md:w-40 md:h-10 bg-secondary-color flex justify-center items-center rounded-2xl hover:scale-105 transition-transform dark:text-white"
           >
             Register
           </Link>
           <Link
             to="/login"
-            className="w-24 h-7 md:w-40 md:h-10 bg-secondary-color flex justify-center items-center rounded-2xl hover:scale-105 transition-transform"
+            className="w-24 h-7 md:w-40 md:h-10 bg-secondary-color flex justify-center items-center rounded-2xl hover:scale-105 transition-transform dark:text-white"
           >
             Login
           </Link>
@@ -52,23 +52,25 @@ export function Presentation() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-5 mt-10">
           <div className="bg-secondary-color h-72 flex flex-col items-center justify-center p-10 md:max-w-lg hover:scale-105 cursor-pointer transition-transform">
             <img src="/assets/img/filter.svg" className="w-28" />
-            <p className="font-semibold text-sm">Filter by order or by month</p>
+            <p className="font-semibold text-sm dark:text-white">
+              Filter by order or by month
+            </p>
           </div>
           <div className="bg-secondary-color-2 h-72 flex flex-col items-center justify-center p-10 md:max-w-lg hover:scale-105 cursor-pointer transition-transform">
             <img src="/assets/img/graph.svg" className="w-28" />
-            <p className="font-semibold text-sm">
+            <p className="font-semibold text-sm dark:text-white">
               See the money flowing in and out seamlessly
             </p>
           </div>
           <div className="bg-secondary-color h-72 flex flex-col items-center justify-center p-10 md:max-w-lg hover:scale-105 cursor-pointer transition-transform">
             <img src="/assets/img/pig.svg" className="w-28" />
-            <p className="font-semibold text-sm">
+            <p className="font-semibold text-sm dark:text-white">
               Separate money from the rest in the form of a piggy bank
             </p>
           </div>
           <div className="bg-secondary-color-2 h-72 flex flex-col items-center justify-center p-10 md:max-w-lg hover:scale-105 cursor-pointer transition-transform">
             <img src="/assets/img/money.svg" className="w-28" />
-            <p className="font-semibold text-sm">
+            <p className="font-semibold text-sm dark:text-white">
               See how much of your monthly money is left without boring
               calculations
             </p>

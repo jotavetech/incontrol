@@ -43,7 +43,7 @@ export function Home() {
                 <span className="text-secondary-color">Hello,</span> it's good
                 to see you!
               </h1>
-              <p className="text-gray-100 text-sm md:text-base">
+              <p className="text-gray-100 text-sm md:text-base dark:text-black">
                 Here is a summary of your finances
               </p>
               <ResumeItems
@@ -58,13 +58,13 @@ export function Home() {
                   <span className="text-secondary-color">Do</span> not waste
                   your time!
                 </h1>
-                <p className="text-gray-100 text-sm md:text-base text-center">
+                <p className="text-gray-100 text-sm md:text-base text-center dark:text-black">
                   Add your expenses and income to keep an eye on your financial
                   life
                 </p>
                 <button
                   onClick={() => setAddMenuOpen(true)}
-                  className="w-12 mt-3 h-12 rounded-full bg-secondary-color text-3xl hover:scale-105 transition-transform"
+                  className="w-12 mt-3 h-12 rounded-full bg-secondary-color text-3xl hover:scale-105 transition-transform dark:text-white"
                 >
                   +
                 </button>

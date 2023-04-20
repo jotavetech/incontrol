@@ -45,7 +45,7 @@ export function EditForm({ open, onClose, itemInfo, type }: EditFormType) {
   return (
     <div className="fixed w-screen h-screen top-0 left-0 z-20">
       <div className="pt-16 lg:pt-32 z-30 h-screen mx-auto p-5 lg:pl-64">
-        <div className="w-full md:w-[450px] bg-list-bg mx-auto mt-20 rounded-xl shadow-lg animeTop">
+        <div className="w-full md:w-[450px] bg-list-bg mx-auto mt-20 rounded-xl shadow-lg animeTop dark:bg-zinc-200">
           <form onSubmit={handleUpdate} className="p-7 flex flex-col gap-3">
             <Input
               id="title"
@@ -75,21 +75,21 @@ export function EditForm({ open, onClose, itemInfo, type }: EditFormType) {
               <button
                 type="submit"
                 disabled={!title || !description || value <= 0}
-                className="bg-secondary-color px-4 py-2 w-32 text-sm mt-2 md:px-6 md:py-2 md:mt-5 md:text-base rounded-md hover:bg-secondary-color-2 disabled:opacity-60 disabled:cursor-default disabled:hover:bg-secondary-color"
+                className="bg-secondary-color px-4 py-2 w-32 text-sm mt-2 md:px-6 md:py-2 md:mt-5 md:text-base rounded-md hover:bg-secondary-color-2 disabled:opacity-60 disabled:cursor-default disabled:hover:bg-secondary-color dark:text-white"
               >
                 Save
               </button>
               <button
                 onClick={onClose}
                 type="button"
-                className="bg-item-bg px-4 py-2 w-32 text-sm mt-2 md:px-6 md:py-2 md:mt-5 md:text-base rounded-md hover:brightness-125"
+                className="bg-item-bg px-4 py-2 w-32 text-sm mt-2 md:px-6 md:py-2 md:mt-5 md:text-base rounded-md hover:brightness-125 dark:text-white"
               >
                 Cancel
               </button>
               <button
                 onClick={() => handleDelete()}
                 type="button"
-                className="bg-red-500 px-4 py-2 w-32 text-sm mt-2 md:px-6 md:py-2 md:mt-5 md:text-base rounded-md hover:brightness-125"
+                className="bg-red-500 px-4 py-2 w-32 text-sm mt-2 md:px-6 md:py-2 md:mt-5 md:text-base rounded-md hover:brightness-125 dark:text-white"
               >
                 Delete
               </button>

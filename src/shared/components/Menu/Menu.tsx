@@ -39,19 +39,19 @@ export function Menu() {
         onClick={() => setOpened(true)}
         className={` ${
           opened ? "hidden" : "fixed"
-        } lg:hidden right-10 bottom-20 z-50 bg-secondary-color-2 p-2 rounded-full shadow-lg`}
+        } lg:hidden right-10 bottom-20 z-50 bg-secondary-color-2 p-2 rounded-full shadow-lg dark:text-white`}
       >
         <AiOutlineMenu />
       </button>
       <aside
         className={`animeOpenMenu pt-16 md:pt-28 p-2 bg-list-bg h-screen w-48 md:w-60 fixed shadow-lg ${
           opened ? "block" : "hidden"
-        } lg:block z-40`}
+        } lg:block z-40 dark:bg-zinc-100`}
       >
         <div className="p-4 flex flex-col gap-3">
           <button
             onClick={() => setOpened(false)}
-            className="block lg:hidden self-end bg-item-bg p-2 rounded-full shadow-sm"
+            className="block lg:hidden self-end bg-item-bg p-2 rounded-full shadow-sm dark:bg-zinc-200"
           >
             <AiOutlineClose />
           </button>

@@ -24,7 +24,7 @@ export function Dashboard({ type }: { type: "entry" | "spent" }) {
           ))}
         </select> */}
         <select
-          className="bg-item-bg w-36 h-10 p-2 rounded-lg"
+          className="bg-item-bg w-36 h-10 p-2 rounded-lg dark:bg-zinc-100"
           defaultValue="noOrder"
           onChange={({ target }) =>
             setSortType(target.value as "ascending" | "descending" | "noOrder")

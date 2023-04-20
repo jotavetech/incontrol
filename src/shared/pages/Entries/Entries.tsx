@@ -9,7 +9,7 @@ export function Entries() {
             Here is all your{" "}
             <span className="text-secondary-color">entries</span>
           </h1>
-          <p className="text-lg md:text-xl mt-1 text-gray-300">
+          <p className="text-lg md:text-xl mt-1 text-gray-300 dark:text-black">
             You can filter by month or sort by values
           </p>
           <Dashboard type="entry" />

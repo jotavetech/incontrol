@@ -98,7 +98,7 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <div className="App bg-main-bg text-white w-full min-h-screen">
+    <div className="App bg-main-bg dark:bg-zinc-300 text-white w-full min-h-screen dark:text-black">
       <ItemsProvider>
         <RouterProvider router={router} />
       </ItemsProvider>
