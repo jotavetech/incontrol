@@ -12,7 +12,9 @@ export function MenuList({ type, children }: MenuListType) {
       >
         {type === "entries" ? "Entries" : "Spents"}
         <MdShortcut className="fill-secondary-color" />
-        <span className="text-[10px] text-gray-300">(click here)</span>
+        <span className="text-[10px] text-gray-300 dark:text-black">
+          (click here)
+        </span>
       </Link>
       {children}
     </div>
