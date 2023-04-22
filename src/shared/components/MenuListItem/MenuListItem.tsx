@@ -12,10 +12,12 @@ export function MenuListItem({
       key={id}
       className="flex w-full justify-between bg-item-bg py-2 px-4 rounded-lg dark:bg-zinc-100"
     >
-      <p>{title}</p>
+      <p className="w-[25%] whitespace-nowrap overflow-hidden text-ellipsis">
+        {title}
+      </p>
       <span>{date.toLocaleDateString("pt-BR")}</span>
       <span
-        className={`${
+        className={`w-[25%] whitespace-nowrap overflow-hidden text-ellipsis ${
           type === "spent" ? "text-red-400" : "text-secondary-color-2"
         }`}
       >
