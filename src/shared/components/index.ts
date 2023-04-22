@@ -12,3 +12,4 @@ export { ResumeItems } from "./ResumeItems/ResumeItems";
 export { MenuListItem } from "./MenuListItem/MenuListItem";
 export { DetailedList } from "./DetailedList/DetailedList";
 export { DetailedListItem } from "./DetailedListItem/DetailedListItem";
+export { SwitchThemeButton } from "./SwitchThemeButton/SwitchThemeButton";
