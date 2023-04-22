@@ -11,7 +11,7 @@ export function Dashboard({ type }: { type: "entry" | "spent" }) {
 
   return (
     <>
-      <div className="mt-2 md:mt-5 flex gap-5">
+      <div className="mt-2 md:mt-5 flex gap-5 transition-colors">
         {/* <select
           className="bg-item-bg w-36 h-10 p-2 rounded-lg"
           defaultValue="all"

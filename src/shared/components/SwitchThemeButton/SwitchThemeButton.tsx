@@ -29,7 +29,7 @@ export function SwitchThemeButton() {
 
   return (
     <button
-      className="bg-item-bg p-2 rounded-full dark:bg-zinc-200 shadow-sm"
+      className="bg-item-bg p-2 rounded-full dark:bg-zinc-200 shadow-sm transition-colors"
       aria-label="switch theme"
       onClick={switchTheme}
     >

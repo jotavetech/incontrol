@@ -24,7 +24,7 @@ export function Header() {
 
   return (
     <>
-      <header className="w-full bg-list-bg h-16 md:h-20 flex items-center fixed top-0 z-50 shadow-md dark:bg-zinc-100">
+      <header className="w-full bg-list-bg h-16 md:h-20 flex items-center fixed top-0 z-50 shadow-md dark:bg-zinc-100 transition-colors">
         <nav className="flex items-center justify-between w-full md:w-[1200px] p-5 md:p-20 mx-auto">
           <Link to="/" className="text-base md:text-3xl font-semibold">
             in<span className="text-secondary-color">Control</span>

@@ -5,7 +5,7 @@ import { MenuListType } from "./MenuList.types";
 
 export function MenuList({ type, children }: MenuListType) {
   return (
-    <div className="w-full md:w-[50%] h-[230px] md:h-[300px] max-h-[300px] bg-list-bg dark:bg-zinc-200 rounded-xl p-2 md:p-5 relative">
+    <div className="w-full md:w-[50%] h-[230px] md:h-[300px] max-h-[300px] bg-list-bg dark:bg-zinc-200 rounded-xl p-2 md:p-5 relative transition-colors">
       <Link
         to={`/${type}`}
         className="absolute -top-10 font-semibold text-xl left-2 flex items-center gap-1"
