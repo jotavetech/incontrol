@@ -1,12 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 
-import {
-  AddItemForm,
-  HeadMenu,
-  MenuList,
-  MenuListItem,
-  ResumeItems,
-} from "../../components";
+import { AddItemForm, HeadMenu, MenuList, ResumeItems } from "../../components";
 
 import { ItemsContext } from "../../context/itemsContext";
 
@@ -72,54 +66,8 @@ export function Home() {
             </HeadMenu>
           </div>
           <div className="flex flex-col md:flex-row gap-16 md:gap-10 mt-16 pb-10 animeLeft">
-            <MenuList type="entries">
-              <div className="flex flex-col gap-3 overflow-y-auto h-full">
-                {loading ? (
-                  <span className="text-center pt-20 text-2xl text-gray-600 block">
-                    Loading....
-                  </span>
-                ) : entries && entries.length > 0 ? (
-                  entries.map((item) => (
-                    <MenuListItem
-                      key={item.id}
-                      date={item.createdAt}
-                      id={item.id}
-                      title={item.title}
-                      value={item.value}
-                      type="entry"
-                    />
-                  ))
-                ) : (
-                  <span className="text-center pt-20 text-2xl text-gray-600 block">
-                    Nothing found
-                  </span>
-                )}
-              </div>
-            </MenuList>
-            <MenuList type="spents">
-              <div className="flex flex-col gap-3 overflow-y-auto h-full">
-                {loading ? (
-                  <span className="text-center pt-20 text-2xl text-gray-600 block">
-                    Loading....
-                  </span>
-                ) : spents && spents.length > 0 ? (
-                  spents.map((item) => (
-                    <MenuListItem
-                      key={item.id}
-                      date={item.createdAt}
-                      id={item.id}
-                      title={item.title}
-                      value={item.value}
-                      type="spent"
-                    />
-                  ))
-                ) : (
-                  <span className="text-center pt-20 text-2xl text-gray-600 block">
-                    Nothing found
-                  </span>
-                )}
-              </div>
-            </MenuList>
+            <MenuList type="entry" items={entries} loading={loading} />
+            <MenuList type="spent" items={spents} loading={loading} />
           </div>
         </div>
       </div>

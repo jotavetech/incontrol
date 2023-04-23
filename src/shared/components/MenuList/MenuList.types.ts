@@ -1,4 +1,5 @@
 export type MenuListType = {
-  type: "spents" | "entries";
-  children: JSX.Element | JSX.Element[];
+  type: "spent" | "entry";
+  items: Item[] | null;
+  loading: boolean;
 };
