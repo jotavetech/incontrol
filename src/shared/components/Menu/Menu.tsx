@@ -73,10 +73,10 @@ export function Menu() {
               Spents
               <GiPayMoney />
             </MenuItem>
-            <MenuItem handleNavigate={() => handleNavigate("/piggybank")}>
+            {/* <MenuItem handleNavigate={() => handleNavigate("/piggybank")}>
               Piggy Bank
               <BsPiggyBank />
-            </MenuItem>
+            </MenuItem> */}
           </ul>
         </nav>
       </aside>
