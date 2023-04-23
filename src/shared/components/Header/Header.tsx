@@ -51,7 +51,10 @@ export function Header() {
                 <h2 className="text-sm md:text-base">
                   Hello,{" "}
                   {user.displayName
-                    ? user.displayName
+                    ? user.displayName.substring(
+                        0,
+                        user.displayName.indexOf(" ")
+                      )
                     : user.email
                     ? user.email.split("@")[0]
                     : "User"}
