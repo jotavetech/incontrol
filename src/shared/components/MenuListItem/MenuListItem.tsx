@@ -10,7 +10,7 @@ export function MenuListItem({
   return (
     <div
       key={id}
-      className="flex w-full justify-between bg-item-bg py-2 px-4 rounded-lg dark:bg-zinc-100"
+      className="flex w-full justify-between bg-item-bg py-2 px-4 rounded-lg dark:bg-zinc-100 text-sm md:text-base"
     >
       <p className="w-[25%] whitespace-nowrap overflow-hidden text-ellipsis">
         {title}
