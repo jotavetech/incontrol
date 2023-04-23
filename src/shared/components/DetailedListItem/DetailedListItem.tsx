@@ -5,6 +5,12 @@ export function DetailedListItem({
   type,
   onClick,
 }: DetailedListItemType) {
+  const shortDate = (date: string) => {
+    const year = date.substring(8);
+
+    return date.substring(0, 6) + year;
+  };
+
   return (
     <>
       <li
@@ -18,8 +24,8 @@ export function DetailedListItem({
         <p className="text-sm lg:text-base text-ellipsis max-w-[25%] w-[25%] whitespace-nowrap overflow-hidden">
           {item.description}
         </p>
-        <span className="text-sm lg:text-base w-[">
-          {item.createdAt.toLocaleDateString("pt-BR")}
+        <span className="text-sm lg:text-base w-[25%]">
+          {shortDate(item.createdAt.toLocaleDateString("pt-BR"))}
         </span>
         <span
           className={`text-sm lg:text-base text-ellipsis w-[25%] whitespace-nowrap overflow-hidden ${
