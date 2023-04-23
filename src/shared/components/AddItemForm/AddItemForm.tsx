@@ -29,6 +29,11 @@ export function AddItemForm({ open, onClose }: AddItemFormType) {
         createNewSpent({ title, description, value });
         onClose();
       }
+
+      setTitle("");
+      setDescription("");
+      setValue(null);
+      setType("entry");
     } else setError("All fields are required");
   };
 
