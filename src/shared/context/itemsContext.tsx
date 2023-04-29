@@ -26,24 +26,6 @@ export const ItemsProvider = ({ children }: { children: ReactNode }) => {
 
   const [user] = useAuthState(auth);
 
-  // const createNewSpent = async ({ title, description, value }: NewItemType) => {
-  //   if (user) {
-  //     try {
-  //       await addDoc(spentsCollection, {
-  //         ownerId: user.uid,
-  //         title,
-  //         description,
-  //         value,
-  //         createdAt: new Date(),
-  //       });
-
-  //       getSpents();
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   }
-  // };
-
   const createNewItem = async ({
     title,
     description,

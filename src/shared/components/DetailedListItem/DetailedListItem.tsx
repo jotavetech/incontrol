@@ -22,7 +22,7 @@ export function DetailedListItem({
           {item.title}
         </p>
         <p className="text-sm lg:text-base text-ellipsis max-w-[25%] w-[25%] whitespace-nowrap overflow-hidden">
-          {item.description}
+          {item.description ? item.description : "Not specified"}
         </p>
         <span className="text-sm lg:text-base w-[25%]">
           {shortDate(item.createdAt.toLocaleDateString("pt-BR"))}

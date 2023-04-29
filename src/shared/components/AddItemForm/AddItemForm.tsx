@@ -20,7 +20,7 @@ export function AddItemForm({ open, onClose }: AddItemFormType) {
   const handleNewItem = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (title && description && value) {
+    if (title && value) {
       setError("");
 
       createNewItem({ title, description, value, type });
@@ -77,7 +77,7 @@ export function AddItemForm({ open, onClose }: AddItemFormType) {
             <div className="flex gap-2">
               <button
                 type="submit"
-                disabled={!title || !description || value === null}
+                disabled={!title || value === null}
                 className="bg-secondary-color px-4 py-2 w-32 text-sm mt-2 md:px-6 md:py-2 md:mt-5 md:text-base rounded-md hover:bg-secondary-color-2 disabled:opacity-60 disabled:cursor-default disabled:hover:bg-secondary-color dark:text-white"
               >
                 Create
