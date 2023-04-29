@@ -2,7 +2,7 @@ import { ResumeItemsType } from "./ResumeItems.types";
 
 import { useState, useEffect } from "react";
 
-export function ResumeItems({ piggyBank, entries, spents }: ResumeItemsType) {
+export function ResumeItems({ entries, spents }: ResumeItemsType) {
   const [remaining, setRemaining] = useState(0);
 
   useEffect(() => {
@@ -17,10 +17,6 @@ export function ResumeItems({ piggyBank, entries, spents }: ResumeItemsType) {
 
   return (
     <ul className="text-sm mt-5 md:mt-2 md:text-base">
-      <li>
-        Piggy Bank:{" "}
-        <span className="text-secondary-color">${piggyBank.toFixed(2)}</span>
-      </li>
       <li>
         Entries Total:{" "}
         <span className="text-secondary-color">${entries.toFixed(2)}</span>

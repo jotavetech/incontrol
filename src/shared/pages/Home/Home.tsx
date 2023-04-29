@@ -40,11 +40,7 @@ export function Home() {
               <p className="text-gray-100 text-sm md:text-base dark:text-black">
                 Here is a summary of your finances
               </p>
-              <ResumeItems
-                entries={entriesTotal}
-                spents={spentsTotal}
-                piggyBank={0}
-              />
+              <ResumeItems entries={entriesTotal} spents={spentsTotal} />
             </HeadMenu>
             <HeadMenu>
               <div className="flex flex-col items-center">
