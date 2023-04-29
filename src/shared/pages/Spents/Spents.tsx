@@ -10,7 +10,7 @@ export function Spents() {
             <span className="text-secondary-color">spents</span>
           </h1>
           <p className="text-lg md:text-xl mt-1 text-gray-300">
-            You can filter by month or sort by values
+            You can order by values
           </p>
           <Dashboard type="spent" />
         </div>
