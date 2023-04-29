@@ -93,11 +93,11 @@ const router = createBrowserRouter([
   },
 ]);
 
-useEffect(() => {
-  logEvent(analytics, "render_app", { name: "using app" });
-}, []);
-
 function App() {
+  useEffect(() => {
+    logEvent(analytics, "render_app", { name: "using app" });
+  }, []);
+
   return (
     <div className="App bg-main-bg dark:bg-zinc-300 text-white w-full min-h-screen dark:text-black">
       <ItemsProvider>
