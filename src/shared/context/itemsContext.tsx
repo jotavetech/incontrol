@@ -187,10 +187,6 @@ export const ItemsProvider = ({ children }: { children: ReactNode }) => {
     getEntries();
   }, [user]);
 
-  useEffect(() => {
-    console.log(spents);
-  }, [spents, entries]);
-
   return (
     <ItemsContext.Provider
       value={{
