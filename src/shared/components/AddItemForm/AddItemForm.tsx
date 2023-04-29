@@ -15,20 +15,16 @@ export function AddItemForm({ open, onClose }: AddItemFormType) {
 
   if (!open) return null;
 
-  const { createNewEntry, createNewSpent } = useContext(ItemsContext);
+  const { createNewItem } = useContext(ItemsContext);
 
   const handleNewItem = (e: React.FormEvent) => {
     e.preventDefault();
 
     if (title && description && value) {
       setError("");
-      if (type === "entry") {
-        createNewEntry({ title, description, value });
-        onClose();
-      } else {
-        createNewSpent({ title, description, value });
-        onClose();
-      }
+
+      createNewItem({ title, description, value, type });
+      onClose();
 
       setTitle("");
       setDescription("");

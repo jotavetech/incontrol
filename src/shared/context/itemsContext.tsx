@@ -26,13 +26,36 @@ export const ItemsProvider = ({ children }: { children: ReactNode }) => {
 
   const [user] = useAuthState(auth);
 
-  const spentsCollection = collection(db, "spents");
-  const entriesCollection = collection(db, "entries");
+  // const createNewSpent = async ({ title, description, value }: NewItemType) => {
+  //   if (user) {
+  //     try {
+  //       await addDoc(spentsCollection, {
+  //         ownerId: user.uid,
+  //         title,
+  //         description,
+  //         value,
+  //         createdAt: new Date(),
+  //       });
 
-  const createNewSpent = async ({ title, description, value }: NewItemType) => {
+  //       getSpents();
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   }
+  // };
+
+  const createNewItem = async ({
+    title,
+    description,
+    value,
+    type,
+  }: NewItemType) => {
+    const spentsCollection = collection(db, "spents");
+    const entriesCollection = collection(db, "entries");
+
     if (user) {
       try {
-        await addDoc(spentsCollection, {
+        await addDoc(type === "entry" ? entriesCollection : spentsCollection, {
           ownerId: user.uid,
           title,
           description,
@@ -40,25 +63,7 @@ export const ItemsProvider = ({ children }: { children: ReactNode }) => {
           createdAt: new Date(),
         });
 
-        getSpents();
-      } catch (err) {
-        console.log(err);
-      }
-    }
-  };
-
-  const createNewEntry = async ({ title, description, value }: NewItemType) => {
-    if (user) {
-      try {
-        await addDoc(entriesCollection, {
-          ownerId: user.uid,
-          title,
-          description,
-          value,
-          createdAt: new Date(),
-        });
-
-        getEntries();
+        type === "entry" ? getEntries() : getSpents();
       } catch (err) {
         console.log(err);
       }
@@ -192,8 +197,7 @@ export const ItemsProvider = ({ children }: { children: ReactNode }) => {
         entries,
         spents,
         loading,
-        createNewEntry,
-        createNewSpent,
+        createNewItem,
         updateItem,
         deleteItem,
       }}

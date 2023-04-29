@@ -2,8 +2,7 @@ export type ItemsContextType = {
   spents: Item[] | null;
   entries: Item[] | null;
   loading: boolean;
-  createNewEntry: ({ title, description, value }: NewItemType) => void;
-  createNewSpent: ({ title, description, value }: NewItemType) => void;
+  createNewItem: ({ title, description, value, type }: NewItemType) => void;
   updateItem: ({
     itemId,
     newData,
@@ -30,4 +29,5 @@ export type NewItemType = {
   title: string;
   description: string;
   value: number;
+  type: "entry" | "spent";
 };
