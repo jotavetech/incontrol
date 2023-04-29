@@ -13,7 +13,13 @@ import {
 import { Footer, Header, Menu } from "./shared/components";
 
 import { ProtectedRoute, UnloggedRoute } from "./ProtectedRoute";
+
 import { ItemsProvider } from "./shared/context/itemsContext";
+
+import { useEffect } from "react";
+
+import { analytics } from "./shared/firebase";
+import { logEvent } from "firebase/analytics";
 
 function Layout() {
   return (
@@ -86,6 +92,10 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
+useEffect(() => {
+  logEvent(analytics, "render_app", { name: "using app" });
+}, []);
 
 function App() {
   return (
