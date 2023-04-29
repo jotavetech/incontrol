@@ -30,7 +30,7 @@ export function AddItemForm({ open, onClose }: AddItemFormType) {
       setDescription("");
       setValue(null);
       setType("entry");
-    } else setError("Tile and value must be required");
+    } else setError("Title and value must be required");
   };
 
   return (
