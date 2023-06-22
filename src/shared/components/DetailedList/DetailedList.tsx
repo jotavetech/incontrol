@@ -146,11 +146,12 @@ export function DetailedList({ type, sortType }: DetailedListType) {
           Total:{" "}
           <span className="text-secondary-color">
             $
-            {type === "entry"
+            {(type === "entry"
               ? total.entriesTotal
               : total.spentsTotal
               ? total.spentsTotal
-              : 0}
+              : 0
+            ).toFixed(2)}
           </span>
         </p>
       </div>
