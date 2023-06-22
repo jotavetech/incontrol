@@ -6,16 +6,18 @@ import { AddItemFormType, ItemType } from "./AddItemForm.types";
 
 import { ItemsContext } from "../../context/itemsContext";
 
-export function AddItemForm({ open, onClose }: AddItemFormType) {
+export function AddItemForm({ open, onClose, defaultType }: AddItemFormType) {
+  const { createNewItem } = useContext(ItemsContext);
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [value, setValue] = useState<null | number>(null);
-  const [type, setType] = useState<ItemType>("entry");
+  const [type, setType] = useState<ItemType>(() => {
+    return defaultType || "entry";
+  });
   const [error, setError] = useState("");
 
   if (!open) return null;
-
-  const { createNewItem } = useContext(ItemsContext);
 
   const handleNewItem = (e: React.FormEvent) => {
     e.preventDefault();
@@ -67,7 +69,7 @@ export function AddItemForm({ open, onClose }: AddItemFormType) {
             />
             <select
               className="bg-item-bg w-36 h-10 p-2 rounded-lg dark:bg-zinc-200 dark:border-2 dark:border-black"
-              defaultValue="entry"
+              defaultValue={defaultType || "entry"}
               onChange={({ target }) => setType(target.value as ItemType)}
             >
               <option value="entry">Entry</option>

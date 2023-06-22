@@ -6,7 +6,11 @@ export function Spents() {
 
   return (
     <>
-      <AddItemForm onClose={() => setAddMenuOpen(false)} open={addMenuOpen} />
+      <AddItemForm
+        onClose={() => setAddMenuOpen(false)}
+        open={addMenuOpen}
+        defaultType="spent"
+      />
       <div className="pt-16 md:pt-24 overflow-hidden">
         <div className="p-4 lg:pl-64 flex flex-col">
           <h1 className="text-2xl md:text-3xl font-semibold">
