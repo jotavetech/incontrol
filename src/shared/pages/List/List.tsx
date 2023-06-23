@@ -23,7 +23,7 @@ export function List({ type }: { type: "spents" | "entries" }) {
           <Dashboard type={type === "entries" ? "entry" : "spent"} />
           <button
             onClick={() => setAddMenuOpen(true)}
-            className="w-[100px] h-[40px] text-lg rounded-full bg-secondary-color hover:scale-105 transition-transform dark:text-white mb-20"
+            className="w-[100px] h-[40px] text-lg rounded-full bg-secondary-color hover:bg-violet-700 transition-transform dark:text-white mb-20"
           >
             + {type === "entries" ? "entry" : "spent"}
           </button>
