@@ -6,8 +6,7 @@ import {
   Presentation,
   Home,
   Error,
-  Entries,
-  Spents,
+  List,
 } from "./shared/pages";
 
 import { Footer, Header, Menu } from "./shared/components";
@@ -57,7 +56,7 @@ const router = createBrowserRouter([
         path: "/entries",
         element: (
           <ProtectedRoute>
-            <Entries />
+            <List type="entries" />
           </ProtectedRoute>
         ),
       },
@@ -65,7 +64,7 @@ const router = createBrowserRouter([
         path: "/spents",
         element: (
           <ProtectedRoute>
-            <Spents />
+            <List type="spents" />
           </ProtectedRoute>
         ),
       },

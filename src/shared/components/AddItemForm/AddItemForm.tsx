@@ -13,7 +13,7 @@ export function AddItemForm({ open, onClose, defaultType }: AddItemFormType) {
   const [description, setDescription] = useState("");
   const [value, setValue] = useState<null | number>(null);
   const [type, setType] = useState<ItemType>(() => {
-    return defaultType || "entry";
+    return defaultType ? defaultType : "entry";
   });
   const [error, setError] = useState("");
 
