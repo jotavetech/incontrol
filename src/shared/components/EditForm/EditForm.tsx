@@ -23,7 +23,7 @@ export function EditForm({ open, onClose, itemInfo, type }: EditFormType) {
   const handleUpdate = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (title && description && value) {
+    if (title && value) {
       updateItem({
         itemId: itemInfo.id,
         newData: {
@@ -74,7 +74,7 @@ export function EditForm({ open, onClose, itemInfo, type }: EditFormType) {
             <div className="flex gap-2">
               <button
                 type="submit"
-                disabled={!title || !description || value <= 0}
+                disabled={!title || !value}
                 className="bg-secondary-color px-4 py-2 w-32 text-sm mt-2 md:px-6 md:py-2 md:mt-5 md:text-base rounded-md hover:bg-secondary-color-2 disabled:opacity-60 disabled:cursor-default disabled:hover:bg-secondary-color dark:text-white"
               >
                 Save
