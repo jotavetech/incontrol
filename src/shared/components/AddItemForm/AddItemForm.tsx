@@ -1,8 +1,8 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 
 import { Input } from "../";
 
-import { AddItemFormType, ItemType } from "./AddItemForm.types";
+import { AddItemFormType } from "./AddItemForm.types";
 
 import { ItemsContext } from "../../context/itemsContext";
 
@@ -12,12 +12,11 @@ export function AddItemForm({ open, onClose, defaultType }: AddItemFormType) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [value, setValue] = useState<null | number>(null);
-  const [type, setType] = useState<ItemType>(() => {
-    return defaultType ? defaultType : "entry";
-  });
   const [error, setError] = useState("");
 
   if (!open) return null;
+
+  console.log(defaultType);
 
   const handleNewItem = (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,13 +24,12 @@ export function AddItemForm({ open, onClose, defaultType }: AddItemFormType) {
     if (title && value) {
       setError("");
 
-      createNewItem({ title, description, value, type });
+      createNewItem({ title, description, value, type: defaultType });
       onClose();
 
       setTitle("");
       setDescription("");
       setValue(null);
-      setType("entry");
     } else setError("Title and value must be required");
   };
 
@@ -41,7 +39,8 @@ export function AddItemForm({ open, onClose, defaultType }: AddItemFormType) {
         <div className="w-full md:w-[450px] bg-list-bg mx-auto mt-10 md:mt-16 rounded-xl shadow-lg animeTop dark:bg-zinc-200">
           <form onSubmit={handleNewItem} className="p-7 flex flex-col gap-3">
             <h1 className="text-center text-xl md:text-2xl">
-              Add <span className="text-secondary-color">new</span> item
+              Add <span className="text-secondary-color">new</span>{" "}
+              {defaultType}
             </h1>
             <Input
               id="title"
@@ -67,14 +66,7 @@ export function AddItemForm({ open, onClose, defaultType }: AddItemFormType) {
               label="Item value"
               type="number"
             />
-            <select
-              className="bg-item-bg w-36 h-10 p-2 rounded-lg dark:bg-zinc-200 dark:border-2 dark:border-black"
-              defaultValue={defaultType || "entry"}
-              onChange={({ target }) => setType(target.value as ItemType)}
-            >
-              <option value="entry">Entry</option>
-              <option value="spent">Spent</option>
-            </select>
+
             {error && <p className="text-sm text-red-400">{error}</p>}
             <div className="flex gap-2">
               <button
